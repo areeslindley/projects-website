@@ -2,7 +2,8 @@
 jupyter-book>=0.15.0,<1.0.0
 sphinx>=5.0.0
 myst-nb>=0.17.0
-myst-parser>=2.0.0
+# Note: myst-parser is installed automatically by myst-nb (version ~=0.18.0)
+# Do NOT specify myst-parser>=2.0.0 as it conflicts with myst-nb 0.17.x
 ghp-import>=2.1.0
 
 # CRITICAL: Do NOT install myst-cli or mystmd - they conflict with jupyter-book CLI
