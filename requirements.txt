@@ -5,7 +5,8 @@ myst-nb>=0.17.0
 myst-parser>=2.0.0
 ghp-import>=2.1.0
 
-# Note: Do NOT install myst-cli or mystmd as they conflict with jupyter-book CLI
+# CRITICAL: Do NOT install myst-cli or mystmd - they conflict with jupyter-book CLI
+# If myst-cli is installed, it will intercept 'jupyter-book' commands and cause "EISDIR" errors
 
 # Data science stack
 pandas>=2.0.0
