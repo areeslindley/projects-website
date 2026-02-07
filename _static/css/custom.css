@@ -1,0 +1,159 @@
+/* Custom CSS for Jupyter Book Portfolio */
+
+/* Code cell styling */
+.jp-InputArea-editor {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Code output styling */
+.jp-OutputArea-output {
+    font-size: 13px;
+}
+
+/* Increase readability of code blocks */
+pre {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+code {
+    font-size: 13px;
+}
+
+/* Custom color palette */
+:root {
+    --primary-color: #1f77b4;
+    --secondary-color: #2ca02c;
+    --accent-color: #ff7f0e;
+    --warning-color: #d62728;
+    --success-color: #2ca02c;
+}
+
+/* Admonition styling */
+.admonition {
+    border-left: 4px solid var(--primary-color);
+    padding: 1em;
+    margin: 1em 0;
+    background-color: #f8f9fa;
+}
+
+.admonition.note {
+    border-left-color: var(--primary-color);
+}
+
+.admonition.tip {
+    border-left-color: var(--success-color);
+}
+
+.admonition.warning {
+    border-left-color: var(--warning-color);
+}
+
+/* Image responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+}
+
+table th,
+table td {
+    padding: 0.5em;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+/* Navigation improvements */
+.bd-sidebar {
+    font-size: 0.9em;
+}
+
+/* Content area spacing */
+.bd-content {
+    max-width: 900px;
+}
+
+/* Plot styling consistency */
+.output_area {
+    margin: 1em 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .bd-content {
+        padding: 1em;
+    }
+    
+    pre {
+        font-size: 12px;
+        overflow-x: auto;
+    }
+}
+
+/* Print styles */
+@media print {
+    .bd-sidebar,
+    .bd-header {
+        display: none;
+    }
+    
+    .bd-content {
+        max-width: 100%;
+    }
+}
+
+/* Visual enhancements for project pages */
+.project-hero {
+    background: linear-gradient(135deg, #1f77b4 0%, #2ca02c 100%);
+    color: white;
+    padding: 2em;
+    border-radius: 10px;
+    margin: 2em 0;
+    text-align: center;
+}
+
+.project-card {
+    background: #f8f9fa;
+    padding: 1.5em;
+    border-radius: 8px;
+    border-left: 4px solid;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.info-box {
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1.5em 0;
+}
+
+.info-box-blue {
+    background: #e8f4f8;
+}
+
+.info-box-orange {
+    background: #fff5e6;
+    border-left: 4px solid #ff7f0e;
+}
+
+.info-box-green {
+    background: #e8f5e9;
+}

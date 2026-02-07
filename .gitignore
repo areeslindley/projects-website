@@ -1,0 +1,33 @@
+# Jupyter Book build outputs
+_build/
+.jupyter_cache/
+*.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files (optional)
+# models/*.pkl
+# models/*.json
+
+# Data files (keep for now, but can be git-lfs if large)
+# data/*.csv

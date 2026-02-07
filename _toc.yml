@@ -1,0 +1,10 @@
+format: jb-book
+root: intro
+chapters:
+  - file: about
+  - file: projects/titanic/index
+    sections:
+      - file: projects/titanic/01_exploration
+      - file: projects/titanic/02_cleaning
+      - file: projects/titanic/03_modeling
+      - file: projects/titanic/04_results

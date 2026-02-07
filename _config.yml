@@ -1,0 +1,49 @@
+# Jupyter Book configuration
+title: "Alun's Data Science Portfolio"
+author: "Alun Rees"
+logo: "_static/images/profile.jpg"
+
+# Execute notebooks configuration
+execute:
+  execute_notebooks: "off"
+  timeout: 300
+  allow_errors: false
+
+# Sphinx configuration
+sphinx:
+  config:
+    html_theme_options:
+      repository_url: https://github.com/alunrees/alun-projects-website
+      use_repository_button: true
+      use_issues_button: true
+      show_toc_level: 2
+      navigation_with_keys: true
+      theme_switcher: true
+      switcher:
+        json_url: https://alunrees.github.io/alun-projects-website/_static/switcher.json
+        version_match: latest
+      navbar_end:
+        - theme-switcher
+        - type: icon-button
+          icon: fa-brands fa-github
+          name: GitHub
+          url: https://github.com/alunrees/alun-projects-website
+    html_title: "Alun's Data Science Portfolio"
+    html_logo: "_static/images/profile.jpg"
+    html_favicon: "_static/images/profile.jpg"
+    html_theme: "sphinx_book_theme"
+    html_theme_options:
+      primary_sidebar_end: ["page-toc", "edit-this-page"]
+      secondary_sidebar_end: ["sourcelink"]
+      extra_navbar: "<p>Statistical Methodologist | PhD Computational Physics</p>"
+    html_css_files:
+      - css/custom.css
+
+# Bibliography
+bibtex_bibfiles:
+  - references.bib
+
+# LaTeX
+latex:
+  latex_documents:
+    targetname: book.tex
