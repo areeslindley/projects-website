@@ -45,7 +45,8 @@ jobs:
 
       - name: Build Jupyter Book
         run: |
-          jupyter-book build .
+          python -m pip install --upgrade jupyter-book
+          jupyter-book build . --all
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
