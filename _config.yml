@@ -34,7 +34,7 @@ sphinx:
     html_theme: "sphinx_book_theme"
     html_baseurl: "https://areeslindley.github.io/projects-website/"
     html_theme_options:
-      primary_sidebar_end: ["page-toc", "edit-this-page"]
+      primary_sidebar_end: ["edit-this-page"]
       secondary_sidebar_end: ["sourcelink"]
       extra_navbar: "<p>Statistical Methodologist | PhD Computational Physics</p>"
     html_css_files:
