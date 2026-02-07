@@ -13,25 +13,26 @@ execute:
 sphinx:
   config:
     html_theme_options:
-      repository_url: https://github.com/alunrees/alun-projects-website
+      repository_url: https://github.com/areeslindley/projects-website
       use_repository_button: true
       use_issues_button: true
       show_toc_level: 2
       navigation_with_keys: true
       theme_switcher: true
       switcher:
-        json_url: https://alunrees.github.io/alun-projects-website/_static/switcher.json
+        json_url: https://areeslindley.github.io/projects-website/_static/switcher.json
         version_match: latest
       navbar_end:
         - theme-switcher
         - type: icon-button
           icon: fa-brands fa-github
           name: GitHub
-          url: https://github.com/alunrees/alun-projects-website
+          url: https://github.com/areeslindley/projects-website
     html_title: "Alun's Data Science Portfolio"
     html_logo: "_static/images/profile.jpg"
     html_favicon: "_static/images/profile.jpg"
     html_theme: "sphinx_book_theme"
+    html_baseurl: "https://areeslindley.github.io/projects-website/"
     html_theme_options:
       primary_sidebar_end: ["page-toc", "edit-this-page"]
       secondary_sidebar_end: ["sourcelink"]
