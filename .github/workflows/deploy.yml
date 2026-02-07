@@ -42,10 +42,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          # Ensure we're using classic jupyter-book, not myst-cli
+          pip uninstall -y myst-cli mystmd 2>/dev/null || true
+          pip install --force-reinstall "jupyter-book>=0.15.0,<1.0.0"
 
       - name: Build Jupyter Book
         run: |
-          python -m pip install --upgrade jupyter-book
+          # Verify we're using the correct jupyter-book
+          which jupyter-book
+          jupyter-book --version
+          # Build using classic Jupyter Book
           jupyter-book build . --all
 
       - name: Setup Pages
