@@ -12,6 +12,11 @@ execute:
 # Sphinx configuration
 sphinx:
   config:
+    html_title: "Alun's Data Science Portfolio"
+    html_logo: "_static/images/profile.jpg"
+    html_favicon: "_static/images/profile.jpg"
+    html_theme: "sphinx_book_theme"
+    html_baseurl: "https://areeslindley.github.io/projects-website/"
     html_theme_options:
       repository_url: https://github.com/areeslindley/projects-website
       use_repository_button: true
@@ -28,12 +33,6 @@ sphinx:
           icon: fa-brands fa-github
           name: GitHub
           url: https://github.com/areeslindley/projects-website
-    html_title: "Alun's Data Science Portfolio"
-    html_logo: "_static/images/profile.jpg"
-    html_favicon: "_static/images/profile.jpg"
-    html_theme: "sphinx_book_theme"
-    html_baseurl: "https://areeslindley.github.io/projects-website/"
-    html_theme_options:
       primary_sidebar_end: ["edit-this-page"]
       secondary_sidebar_end: ["sourcelink"]
       extra_navbar: "<p>Statistical Methodologist | Data Scientist | PhD Computational Physics</p>"

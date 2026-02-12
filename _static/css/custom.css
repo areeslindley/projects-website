@@ -82,6 +82,25 @@ table th {
     font-size: 0.9em;
 }
 
+/* Ensure sidebar toggle button works */
+.bd-header-article .sidebar-toggle-button {
+    display: block !important;
+    cursor: pointer;
+}
+
+.bd-header-article .sidebar-toggle-button:hover {
+    opacity: 0.8;
+}
+
+/* Ensure sidebar can be hidden */
+.bd-sidebar-primary {
+    transition: transform 0.2s ease-in-out;
+}
+
+.bd-sidebar-primary.hidden {
+    transform: translateX(-100%);
+}
+
 /* Content area spacing */
 .bd-content {
     max-width: 900px;
