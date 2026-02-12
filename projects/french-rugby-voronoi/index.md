@@ -25,6 +25,20 @@ The analysis reveals:
 - Sparse coverage in northern France despite population density
 - Territorial dominance by southwestern clubs
 
+## Visualizations
+
+### Top 14 Territories
+
+The premier French rugby league shows strong concentration in the southwest, with teams like Toulouse, Castres, and Montpellier controlling significant territories in the traditional rugby heartland.
+
+![Top 14 Voronoi Diagram](images/top14_voronoi.png)
+
+### Pro D2 Territories
+
+The second-tier league also demonstrates southwestern clustering, with additional teams filling gaps in the geographic distribution and creating more granular territorial divisions.
+
+![Pro D2 Voronoi Diagram](images/prod2_voronoi.png)
+
 ## Technical Stack
 
 - **Python**: Core analysis language
