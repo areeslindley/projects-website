@@ -23,19 +23,8 @@ sphinx:
       use_issues_button: true
       show_toc_level: 2
       navigation_with_keys: true
-      theme_switcher: true
-      switcher:
-        json_url: https://areeslindley.github.io/projects-website/_static/switcher.json
-        version_match: latest
-      navbar_end:
-        - theme-switcher
-        - type: icon-button
-          icon: fa-brands fa-github
-          name: GitHub
-          url: https://github.com/areeslindley/projects-website
       primary_sidebar_end: ["edit-this-page"]
       secondary_sidebar_end: ["sourcelink"]
-      extra_navbar: "<p>Statistical Methodologist | Data Scientist | PhD Computational Physics</p>"
     html_css_files:
       - css/custom.css
 
