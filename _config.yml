@@ -5,7 +5,7 @@ logo: "_static/images/profile.jpg"
 
 # Execute notebooks configuration
 execute:
-  execute_notebooks: "on"
+  execute_notebooks: "auto"
   timeout: 300
   allow_errors: false
 
