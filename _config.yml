@@ -5,7 +5,7 @@ logo: "_static/images/profile.jpg"
 
 # Execute notebooks configuration
 execute:
-  execute_notebooks: "off"
+  execute_notebooks: "on"
   timeout: 300
   allow_errors: false
 
@@ -36,7 +36,7 @@ sphinx:
     html_theme_options:
       primary_sidebar_end: ["edit-this-page"]
       secondary_sidebar_end: ["sourcelink"]
-      extra_navbar: "<p>Statistical Methodologist | PhD Computational Physics</p>"
+      extra_navbar: "<p>Statistical Methodologist | Data Scientist | PhD Computational Physics</p>"
     html_css_files:
       - css/custom.css
 
