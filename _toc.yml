@@ -8,3 +8,6 @@ chapters:
       - file: projects/titanic/02_cleaning
       - file: projects/titanic/03_modeling
       - file: projects/titanic/04_results
+  - file: projects/french-rugby-voronoi/index
+    sections:
+      - file: projects/french-rugby-voronoi/01_voronoi_analysis

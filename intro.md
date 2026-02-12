@@ -17,10 +17,14 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
   </div>
 </div>
 
-<div style="background: #f8f9fa; padding: 2em; border-radius: 10px; border: 2px dashed #ddd; text-align: center; display: flex; align-items: center; justify-content: center; min-height: 200px;">
-  <div>
-    <div style="font-size: 3em; margin-bottom: 0.5em; opacity: 0.5;">📊</div>
-    <p style="color: #999; margin: 0;"><em>More projects coming soon...</em></p>
+<div style="background: linear-gradient(135deg, #ff7f0e 0%, #d62728 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🏉</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/french-rugby-voronoi/index.md" style="color: white; text-decoration: none;">French Rugby Voronoi Analysis</a> ⭐ NEW</h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Geospatial analysis of French professional rugby teams using Voronoi diagrams. Showcases computational geometry, interactive mapping, and sports analytics.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Geospatial Analysis</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Voronoi Diagrams</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Sports Analytics</span>
   </div>
 </div>
 
@@ -28,9 +32,9 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 ## Technical Stack
 
-**Languages & Tools:** Python • R • Statistical Modeling • Machine Learning • Time Series Analysis
+**Languages & Tools:** Python • R • Statistical Modeling • Machine Learning • Geospatial Analysis • Time Series
 
-**Key Libraries:** scikit-learn • pandas • numpy • matplotlib • seaborn • xgboost • statsmodels
+**Key Libraries:** scikit-learn • pandas • numpy • matplotlib • seaborn • xgboost • statsmodels • geopandas • shapely • folium
 
 ## About This Portfolio
 
