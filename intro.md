@@ -43,9 +43,10 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 ## Technical Stack
 
-**Languages & Tools:** Python • R • Statistical Modeling • Machine Learning • Geospatial Analysis • Time Series
+**Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
 
-**Key Libraries:** scikit-learn • pandas • numpy • matplotlib • seaborn • xgboost • statsmodels • geopandas • shapely • folium
+**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • geopandas • shapely • folium  
+**Key Libraries (R):** rjd3/JDemetra+ • KFAS • xts • tidyverse • Shiny • Quarto
 
 ## About This Portfolio
 
@@ -55,4 +56,4 @@ All code is open-source and available on [GitHub](https://github.com/alunrees/al
 
 ---
 
-*Last updated: 2024*
+*Last updated: 2025*

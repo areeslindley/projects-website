@@ -1,6 +1,7 @@
 # Jupyter Book configuration
 title: "Alun's Data Science Portfolio"
 author: "Alun Rees"
+copyright: "2025"
 logo: "_static/images/profile.jpg"
 
 # Execute notebooks configuration
