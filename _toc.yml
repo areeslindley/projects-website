@@ -14,3 +14,4 @@ chapters:
   - file: projects/beatles-discography/index
     sections:
       - file: projects/beatles-discography/01_interactive_visuals
+      - file: projects/beatles-discography/02_live_interactive_visuals

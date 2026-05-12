@@ -28,6 +28,7 @@ The code is designed to work with common Beatles dataset schemas. If writer fiel
 
 ## Next step
 
-Open the walkthrough below:
+Open one of the pages below:
 
 - [Build the visuals](01_interactive_visuals.md)
+- [See the live interactive visuals](02_live_interactive_visuals.ipynb)
