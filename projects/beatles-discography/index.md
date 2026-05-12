@@ -31,4 +31,4 @@ The code is designed to work with common Beatles dataset schemas. If writer fiel
 Open one of the pages below:
 
 - [Build the visuals](01_interactive_visuals.md)
-- [See the live interactive visuals](02_live_interactive_visuals.ipynb)
+- [See the live interactive visuals](02_visual_gallery.md)
