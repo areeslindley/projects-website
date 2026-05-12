@@ -11,3 +11,6 @@ chapters:
   - file: projects/french-rugby-voronoi/index
     sections:
       - file: projects/french-rugby-voronoi/01_voronoi_analysis
+  - file: projects/beatles-discography/index
+    sections:
+      - file: projects/beatles-discography/01_interactive_visuals

@@ -28,6 +28,17 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
   </div>
 </div>
 
+<div style="background: linear-gradient(135deg, #4b2e83 0%, #1f4e79 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🎸</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/beatles-discography/index.md" style="color: white; text-decoration: none;">Beatles Discography Visual Story</a> ⭐ NEW</h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Interactive music analytics using The Beatles Spotify dataset, including writer-level popularity and sunburst views of the full discography.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Data Visualization</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Music Analytics</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Plotly</span>
+  </div>
+</div>
+
 </div>
 
 ## Technical Stack
