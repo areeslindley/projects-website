@@ -6,6 +6,19 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
 
+<div style="background: linear-gradient(135deg, #1f4e79 0%, #2d6a4f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🗺️</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/uk-terrain-rugby/index.md" style="color: white; text-decoration: none;">UK Terrain &amp; Rugby Geography</a> ⭐ NEW</h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Raster and vector spatial analysis using the <code style="background: rgba(255,255,255,0.2); color: white; padding: 0.1em 0.35em; border-radius: 4px;">tidyterra</code> R package. Combines UK elevation data with English Premiership rugby club locations to explore the geography of the game.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Geospatial Analysis</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">tidyterra</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">terra</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">R</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Sports Analytics</span>
+  </div>
+</div>
+
 <div style="background: linear-gradient(135deg, #1f77b4 0%, #2ca02c 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🚢</div>
   <h3 style="color: white; margin-top: 0;"><a href="projects/titanic/index.md" style="color: white; text-decoration: none;">Titanic Survival Analysis</a></h3>

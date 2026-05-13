@@ -1,0 +1,130 @@
+---
+title: "UK elevation and seasonal temperature"
+output:
+  html_document:
+    theme: null
+    mathjax: null
+jupyter:
+  jupytext:
+    formats: ipynb,Rmd
+    main_language: R
+    text_representation:
+      extension: .Rmd
+      format_name: rmarkdown
+      format_version: '1.2'
+      jupytext_version: 1.19.2
+---
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyterra)
+library(terra)
+library(geodata)
+library(rnaturalearth)
+library(ggplot2)
+library(dplyr)
+library(sf)
+library(rlang)
+```
+
+## Introduction
+
+A **SpatRaster** from the **terra** package stores one or more gridded layers. Each layer is a matrix of cell values aligned to a common extent, resolution, and **coordinate reference system (CRS)**. When a raster has multiple layers—such as twelve monthly temperature grids—each layer is like a variable measured at the same locations on the Earth's surface.
+
+**tidyterra** extends **dplyr**-style verbs to **SpatRaster** and **SpatVector** objects. Unlike applying **dplyr** to a plain data frame, **`tidyterra::mutate()`**, **`select()`**, and **`rename()`** on a raster return another **SpatRaster** (or updated raster), preserving spatial metadata. That keeps workflows inside the **terra** object model instead of melting everything to long tables first.
+
+```{r load-elevation, message=FALSE}
+uk_elev <- geodata::elevation_30s(country = "GBR", path = tempdir())
+uk_boundary <- rnaturalearth::ne_countries(
+  country = "United Kingdom",
+  scale = "medium",
+  returnclass = "sv"
+)
+
+if (!terra::same.crs(uk_elev, uk_boundary)) {
+  uk_boundary <- terra::project(uk_boundary, uk_elev)
+}
+
+uk_elev_cropped <- terra::crop(uk_elev, uk_boundary)
+uk_elev_masked <- terra::mask(uk_elev_cropped, uk_boundary)
+
+elev_layer <- names(uk_elev_masked)[1]
+uk_elev_masked <- uk_elev_masked |>
+  tidyterra::rename(elevation = !!rlang::sym(elev_layer)) |>
+  tidyterra::mutate(
+    elev_band = cut(
+      elevation,
+      breaks = c(-Inf, 100, 300, 600, Inf),
+      labels = c("0-100 m", "100-300 m", "300-600 m", "600+ m"),
+      include.lowest = TRUE
+    )
+  )
+```
+
+The code above downloads a **30 arc-second** (~1 km) elevation grid for Great Britain, clips it to the Natural Earth **United Kingdom** polygon, and uses **`terra::crop`** and **`terra::mask`** so only cells inside the national boundary contribute to the map. (Geometric clipping lives in **terra**; **tidyterra** is used for **dplyr**-style layer operations such as **`rename`** and **`mutate`**.) A **numeric** layer `elevation` (metres) is used for continuous mapping; **`elev_band`** is a derived categorical layer created with **`cut()`** inside **`mutate()`**, illustrating dplyr-like syntax on a **SpatRaster** without dropping the grid structure.
+
+**Hypsometric tint** palettes mimic cartographic conventions for relief: low elevations read as greens and yellows, high ground as browns and whites. That perceptual ordering matches how people interpret terrain on topographic maps, so **`scale_fill_hypso_tint_c()`** is a natural choice for continuous elevation—even when we also keep discrete **bands** for other summaries.
+
+```{r plot-elevation, message=FALSE, fig.cap="UK elevation (masked) with country outline."}
+p_elev <- ggplot() +
+  tidyterra::geom_spatraster(data = uk_elev_masked, aes(fill = elevation)) +
+  tidyterra::scale_fill_hypso_tint_c(
+    name = "m a.s.l.",
+    guide = guide_colorbar(barwidth = unit(3.5, "cm"), title.position = "top")
+  ) +
+  tidyterra::geom_spatvector(data = uk_boundary, fill = NA, colour = "grey20", linewidth = 0.35) +
+  labs(title = "UK Elevation") +
+  theme_void() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", margin = margin(b = 6)),
+    legend.title = element_text(size = 9),
+    legend.position = "bottom"
+  )
+
+p_elev
+```
+
+## Seasonal mean temperature
+
+WorldClim monthly mean temperature for the UK arrives as a **twelve-layer SpatRaster** (one layer per month). Layers are indexed **1–12** for January–December. We keep four representative months—**December (12), March (3), June (6), September (9)**—as proxies for meteorological **winter, spring, summer, and autumn** in the Northern Hemisphere.
+
+```{r worldclim, message=FALSE}
+tavg <- geodata::worldclim_country(country = "GBR", var = "tavg", res = 10, path = tempdir())
+
+layer_names <- names(tavg)
+season_pick <- layer_names[c(12L, 3L, 6L, 9L)]
+
+uk_tavg_seasons <- tavg |>
+  tidyterra::select(dplyr::all_of(season_pick)) |>
+  tidyterra::rename(
+    Winter = !!rlang::sym(season_pick[1]),
+    Spring = !!rlang::sym(season_pick[2]),
+    Summer = !!rlang::sym(season_pick[3]),
+    Autumn = !!rlang::sym(season_pick[4])
+  )
+```
+
+Here **`tidyterra::select()`** subsets raster **layers** by name (analogous to choosing columns). **`rename()`** gives human-readable season labels while the result remains a **SpatRaster** suitable for **`geom_spatraster()`** and faceting.
+
+The **whitebox**-derived continuous palettes (here **`"muted"`**) provide colour ramps tuned for terrain and climate-style surfaces; they offer an alternative to hypsometric tints when the variable is **temperature** rather than relief.
+
+```{r plot-temperature, message=FALSE, fig.cap="Mean temperature (°C) by season (Dec, Mar, Jun, Sep)."}
+ggplot() +
+  tidyterra::geom_spatraster(data = uk_tavg_seasons, aes(fill = after_stat(value))) +
+  facet_wrap(~lyr, ncol = 2) +
+  tidyterra::scale_fill_whitebox_c(
+    palette = "muted",
+    name = "°C",
+    guide = guide_colorbar(barwidth = unit(2.8, "cm"), title.position = "top")
+  ) +
+  tidyterra::geom_spatvector(data = uk_boundary, fill = NA, colour = "grey35", linewidth = 0.25) +
+  labs(title = "UK Mean Temperature by Season (°C)") +
+  theme_void() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", margin = margin(b = 8)),
+    strip.text = element_text(face = "bold", size = 10),
+    legend.title = element_text(size = 9),
+    legend.position = "bottom"
+  )
+```
+
+Together, the elevation and temperature maps show how **multi-layer rasters** encode **space × variable × time** (or season), and how **tidyterra** keeps those structures intact while integrating with **ggplot2**.

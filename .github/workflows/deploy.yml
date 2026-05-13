@@ -46,6 +46,32 @@ jobs:
           pip uninstall -y myst-cli mystmd 2>/dev/null || true
           pip install --force-reinstall "jupyter-book>=0.15.0,<1.0.0"
 
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4'
+          use-public-rspm: true
+
+      - name: Install R packages (spatial + IRkernel)
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::IRkernel
+            any::tidyterra
+            any::terra
+            any::geodata
+            any::rnaturalearth
+            any::rnaturalearthdata
+            any::ggplot2
+            any::dplyr
+            any::sf
+            any::rlang
+            any::knitr
+            any::patchwork
+
+      - name: Register IR Jupyter kernel
+        run: Rscript -e "IRkernel::installspec(user = TRUE)"
+
       - name: Build Jupyter Book
         run: |
           # Verify we're using the correct jupyter-book

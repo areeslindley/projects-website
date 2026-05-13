@@ -15,3 +15,8 @@ chapters:
     sections:
       - file: projects/beatles-discography/01_interactive_visuals
       - file: projects/beatles-discography/02_visual_gallery
+  - file: projects/uk-terrain-rugby/index
+    sections:
+      - file: projects/uk-terrain-rugby/01_terrain_analysis
+      - file: projects/uk-terrain-rugby/02_rugby_overlay
+      - file: projects/uk-terrain-rugby/03_urc_overlay
