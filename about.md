@@ -39,7 +39,7 @@ My doctoral research focused on computational methods in physics, developing ski
 
 ## Contact
 
-- **GitHub**: [alunrees](https://github.com/alunrees)
+- **GitHub**: [areeslindley](https://github.com/areeslindley)
 - **Email**: [alun.rees-lindley@outlook.com](mailto:alun.rees-lindley@outlook.com)
 - **LinkedIn**: [alun-rees-lindley](https://www.linkedin.com/in/alun-rees-lindley/)
 
