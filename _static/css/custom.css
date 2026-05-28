@@ -1,5 +1,155 @@
 /* Custom CSS for Jupyter Book Portfolio */
 
+/* Top banner across all pages */
+.bd-header-announcement {
+    background: linear-gradient(90deg, #17395c 0%, #1f77b4 60%, #2ca02c 100%);
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bd-header-announcement__content {
+    max-width: 100%;
+    padding: 0.4rem 1rem;
+}
+
+.top-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+}
+
+.top-banner__left,
+.top-banner__right {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.top-banner__logo {
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 10px;
+    display: inline-flex;
+}
+
+.top-banner__logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.top-banner__name {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    font-size: 0.95rem;
+    color: #ffffff;
+}
+
+.top-banner__socials {
+    display: flex;
+    align-items: center;
+    gap: 0.42rem;
+}
+
+.top-banner__icon-link {
+    width: 1.8rem;
+    height: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 999px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.15s ease-in-out, transform 0.15s ease-in-out;
+}
+
+.top-banner__icon-link svg {
+    width: 0.95rem;
+    height: 0.95rem;
+}
+
+.top-banner__icon-link:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.top-banner__icon-link:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.top-banner__menu {
+    position: relative;
+}
+
+.top-banner__menu > summary {
+    list-style: none;
+    cursor: pointer;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+    padding: 0.22rem 0.7rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.top-banner__menu > summary::-webkit-details-marker {
+    display: none;
+}
+
+.top-banner__menu > summary::after {
+    content: " \25BE";
+    font-size: 0.7rem;
+}
+
+.top-banner__menu > summary:hover,
+.top-banner__menu[open] > summary {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.top-banner__menu > summary:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.top-banner__dropdown {
+    position: absolute;
+    right: 0;
+    margin-top: 0.35rem;
+    min-width: 220px;
+    background: #ffffff;
+    border: 1px solid #dce1e7;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(23, 57, 92, 0.18);
+    overflow: hidden;
+    z-index: 2000;
+}
+
+.top-banner__dropdown a {
+    display: block;
+    color: #17395c;
+    text-decoration: none;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    border-top: 1px solid #eef1f4;
+}
+
+.top-banner__dropdown a:first-child {
+    border-top: none;
+}
+
+.top-banner__dropdown a:hover {
+    background: #f3f7fb;
+    color: #0f2740;
+}
+
 /* Code cell styling */
 .jp-InputArea-editor {
     font-size: 14px;
@@ -82,6 +232,61 @@ table th {
     font-size: 0.9em;
 }
 
+/* Secondary sidebar: narrower and collapsible by hover/focus */
+@media (min-width: 1200px) {
+    .bd-sidebar-secondary {
+        width: 2.1rem;
+        min-width: 2.1rem;
+        max-width: 2.1rem;
+        justify-self: end;
+        margin-left: auto;
+        margin-right: 0;
+        overflow: hidden;
+        transition: width 0.2s ease-in-out;
+        border-left: 1px solid #e3e7ec;
+        background: #ffffff;
+    }
+
+    .bd-sidebar-secondary::before {
+        content: "TOC";
+        display: block;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        text-align: center;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        color: #5a6b7f;
+        padding: 0.55rem 0.35rem;
+        font-weight: 700;
+    }
+
+    .bd-sidebar-secondary .sidebar-secondary-items {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .bd-sidebar-secondary:hover,
+    .bd-sidebar-secondary:focus-within {
+        width: 12.5rem;
+        min-width: 12.5rem;
+        max-width: 12.5rem;
+    }
+
+    .bd-sidebar-secondary:hover::before,
+    .bd-sidebar-secondary:focus-within::before {
+        display: none;
+    }
+
+    .bd-sidebar-secondary:hover .sidebar-secondary-items,
+    .bd-sidebar-secondary:focus-within .sidebar-secondary-items {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
 /* Ensure sidebar toggle button works */
 .bd-header-article .sidebar-toggle-button {
     display: block !important;
@@ -113,6 +318,46 @@ table th {
 
 /* Responsive design */
 @media (max-width: 768px) {
+    .bd-header-announcement__content {
+        padding: 0.45rem 0.8rem;
+    }
+
+    .top-banner {
+        gap: 0.5rem;
+    }
+
+    .top-banner__name {
+        font-size: 0.86rem;
+    }
+
+    .top-banner__logo {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .top-banner__socials {
+        gap: 0.26rem;
+    }
+
+    .top-banner__icon-link {
+        width: 1.55rem;
+        height: 1.55rem;
+    }
+
+    .top-banner__icon-link svg {
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+
+    .top-banner__menu > summary {
+        font-size: 0.8rem;
+        padding: 0.18rem 0.58rem;
+    }
+
+    .top-banner__dropdown {
+        min-width: 190px;
+    }
+
     .bd-content {
         padding: 1em;
     }

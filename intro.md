@@ -8,7 +8,7 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="background: linear-gradient(135deg, #1f4e79 0%, #2d6a4f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🗺️</div>
-  <h3 style="color: white; margin-top: 0;"><a href="projects/uk-terrain-rugby/index.md" style="color: white; text-decoration: none;">UK Terrain &amp; Rugby Geography</a> ⭐ NEW</h3>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/uk-terrain-rugby/index.md" style="color: white; text-decoration: none;">UK Terrain &amp; Rugby Geography</a></h3>
   <p style="margin-bottom: 1em; opacity: 0.95;">Raster and vector spatial analysis using the <code style="background: rgba(255,255,255,0.2); color: white; padding: 0.1em 0.35em; border-radius: 4px;">tidyterra</code> R package. Combines UK elevation data with English Premiership rugby club locations to explore the geography of the game.</p>
   <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
     <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Geospatial Analysis</span>
@@ -32,7 +32,7 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="background: linear-gradient(135deg, #ff7f0e 0%, #d62728 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🏉</div>
-  <h3 style="color: white; margin-top: 0;"><a href="projects/french-rugby-voronoi/index.md" style="color: white; text-decoration: none;">French Rugby Voronoi Analysis</a> ⭐ NEW</h3>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/french-rugby-voronoi/index.md" style="color: white; text-decoration: none;">French Rugby Voronoi Analysis</a></h3>
   <p style="margin-bottom: 1em; opacity: 0.95;">Geospatial analysis of French professional rugby teams using Voronoi diagrams. Showcases computational geometry, interactive mapping, and sports analytics.</p>
   <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
     <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Geospatial Analysis</span>
@@ -43,7 +43,7 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="background: linear-gradient(135deg, #4b2e83 0%, #1f4e79 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🎸</div>
-  <h3 style="color: white; margin-top: 0;"><a href="projects/beatles-discography/index.md" style="color: white; text-decoration: none;">Beatles Discography Visual Story</a> ⭐ NEW</h3>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/beatles-discography/index.md" style="color: white; text-decoration: none;">Beatles Discography Visual Story</a></h3>
   <p style="margin-bottom: 1em; opacity: 0.95;">Interactive music analytics using The Beatles Spotify dataset, including writer-level popularity and sunburst views of the full discography.</p>
   <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
     <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Data Visualization</span>
@@ -69,4 +69,4 @@ All code is open-source and available on [GitHub](https://github.com/alunrees/al
 
 ---
 
-*Last updated: 2025*
+*Last updated: 2026*
