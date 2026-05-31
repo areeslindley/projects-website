@@ -74,9 +74,6 @@ jobs:
             any::htmltools
             any::raster
             any::jsonlite
-            # any::copula
-            # any::ggrepel
-            # any::tidyr
 
       - name: Register IR Jupyter kernel
         run: Rscript -e "IRkernel::installspec(user = TRUE)"
