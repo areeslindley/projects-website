@@ -1,5 +1,5 @@
 ---
-title: "United Rugby Championship — stadium elevation"
+title: "Super Rugby — stadium elevation"
 output:
   html_document:
     theme: null
@@ -36,70 +36,60 @@ library(raster)
 library(IRdisplay)
 ```
 
-## United Rugby Championship (URC)
+## Super Rugby (New Zealand, Australia, South Africa)
 
-The **United Rugby Championship** spans **Ireland**, the **United Kingdom** (including **Northern Ireland**), **Wales**, **Scotland**, **Italy**, and **South Africa**. Unlike the English Premiership notebook, we cannot use a single **GBR** elevation tile: we pull **SRTM 30 arc-second** rasters from **`geodata::elevation_30s()`** for **`IRL`**, **`GBR`**, **`ITA`**, and **`ZAF`**, then sample the correct national raster for each stadium so we never merge full-country grids in memory.
+**Super Rugby** has taken several formats. This notebook focuses on the classic **three-country** footprint—franchises in **New Zealand**, **Australia**, and **South Africa** that shared the competition before South African sides moved to the **United Rugby Championship**. **Super Rugby Pacific** today is centred on New Zealand and Australia; the South African grounds here are the same venues those franchises used in the Super Rugby era.
 
-**Stadium coordinates** below are approximate centre points for each club’s usual home ground (sources: club / venue pages and maps). If you need survey-grade coordinates or a different season’s venues, replace the `urc_clubs` table and rebuild.
+Elevation comes from **`geodata::elevation_30s()`** tiles for **`NZL`**, **`AUS`**, and **`ZAF`**, with each stadium sampled from its national raster (same pattern as the URC notebook). **Coordinates** are approximate stadium centre points; edit `super_clubs` to refine them.
 
-```{r urc-table}
-urc_clubs <- data.frame(
+```{r super-table}
+super_clubs <- data.frame(
   club = c(
-    "Leinster", "Munster", "Ulster", "Connacht",
-    "Glasgow Warriors", "Edinburgh",
-    "Cardiff Rugby", "Ospreys", "Scarlets", "Dragons",
-    "Benetton", "Zebre Parma",
+    "Blues", "Chiefs", "Crusaders", "Highlanders", "Hurricanes",
+    "Brumbies", "Reds", "Waratahs", "Western Force", "Rebels",
     "Bulls", "Stormers", "Sharks", "Lions"
   ),
   stadium = c(
-    "RDS Arena", "Thomond Park", "Kingspan Stadium", "The Sportsground",
-    "Scotstoun Stadium", "Scottish Gas Murrayfield",
-    "Cardiff Arms Park", "Swansea.com Stadium", "Parc y Scarlets", "Rodney Parade",
-    "Stadio Monigo", "Stadio Lanfranchi",
-    "Loftus Versfeld", "DHL Stadium", "Hollywoodbets Kings Park", "Emirates Airline Park"
+    "Eden Park", "FMG Stadium Waikato", "Apollo Projects Stadium",
+    "Forsyth Barr Stadium", "Sky Stadium",
+    "GIO Stadium", "Suncorp Stadium", "Allianz Stadium",
+    "HBF Park", "AAMI Park",
+    "Loftus Versfeld", "DHL Stadium", "Hollywoodbets Kings Park",
+    "Emirates Airline Park"
   ),
   lon = c(
-    -6.226, -8.618, -5.943, -9.077,
-    -4.335, -3.240,
-    -3.170, -3.941, -4.128, -2.991,
-    12.229, 10.333,
+    174.744, 175.272, 172.636, 170.526, 174.776,
+    149.002, 153.009, 151.225, 115.770, 144.983,
     28.229, 18.411, 31.030, 28.061
   ),
   lat = c(
-    53.325, 52.674, 54.576, 53.279,
-    55.881, 55.942,
-    51.479, 51.693, 51.679, 51.588,
-    45.683, 44.800,
+    -36.875, -37.781, -43.531, -45.869, -41.272,
+    -35.250, -27.464, -33.889, -31.938, -37.825,
     -25.748, -33.903, -29.825, -26.198
   ),
   country = c(
-    "Ireland", "Ireland", "United Kingdom", "Ireland",
-    "United Kingdom", "United Kingdom",
-    "United Kingdom", "United Kingdom", "United Kingdom", "United Kingdom",
-    "Italy", "Italy",
-    "South Africa", "South Africa", "South Africa", "South Africa"
+    rep("New Zealand", 5),
+    rep("Australia", 5),
+    rep("South Africa", 4)
   ),
   elev_source = c(
-    "IRL", "IRL", "GBR", "IRL",
-    "GBR", "GBR",
-    "GBR", "GBR", "GBR", "GBR",
-    "ITA", "ITA",
-    "ZAF", "ZAF", "ZAF", "ZAF"
+    rep("NZL", 5),
+    rep("AUS", 5),
+    rep("ZAF", 4)
   ),
   stringsAsFactors = FALSE
 )
 
-urc_sv <- terra::vect(urc_clubs, geom = c("lon", "lat"), crs = "EPSG:4326")
+super_sv <- terra::vect(super_clubs, geom = c("lon", "lat"), crs = "EPSG:4326")
 ```
 
-## Download elevation tiles (once per country)
+## Download elevation tiles
 
 ```{r elev-tiles, message=FALSE}
 td <- tempdir()
 elev_tiles <- list(
-  IRL = geodata::elevation_30s(country = "IRL", path = td),
-  GBR = geodata::elevation_30s(country = "GBR", path = td),
-  ITA = geodata::elevation_30s(country = "ITA", path = td),
+  NZL = geodata::elevation_30s(country = "NZL", path = td),
+  AUS = geodata::elevation_30s(country = "AUS", path = td),
   ZAF = geodata::elevation_30s(country = "ZAF", path = td)
 )
 
@@ -110,7 +100,7 @@ for (nm in names(elev_tiles)) {
 
 ## Extract elevation per ground
 
-```{r extract-urc}
+```{r extract-super}
 extract_point_elev <- function(lon, lat, src) {
   r <- elev_tiles[[src]]
   pts <- terra::vect(
@@ -125,7 +115,7 @@ extract_point_elev <- function(lon, lat, src) {
   as.numeric(ex[[names(r)[1]]])
 }
 
-urc_elev <- urc_clubs |>
+super_elev <- super_clubs |>
   mutate(
     ground_elevation_m = mapply(
       extract_point_elev,
@@ -136,26 +126,24 @@ urc_elev <- urc_clubs |>
     )
   )
 
-urc_elev |>
+super_elev |>
   arrange(desc(ground_elevation_m)) |>
   knitr::kable(
     digits = 1,
-    caption = "URC grounds ranked by extracted elevation (m a.s.l.; national SRTM tile)"
+    caption = "Super Rugby grounds ranked by extracted elevation (m a.s.l.; national SRTM tile)"
   )
 ```
 
-The bar chart orders clubs from **lowest** to **highest** extracted elevation using the same values as the table.
-
-```{r bar-urc, message=FALSE, fig.cap="URC stadium elevation (m a.s.l.) by club, ascending."}
-urc_bar <- urc_elev |>
+```{r bar-super, message=FALSE, fig.cap="Super Rugby stadium elevation (m a.s.l.) by franchise, ascending."}
+super_bar <- super_elev |>
   mutate(club = stats::reorder(club, ground_elevation_m))
 
-ggplot(urc_bar, aes(x = club, y = ground_elevation_m, fill = country)) +
+ggplot(super_bar, aes(x = club, y = ground_elevation_m, fill = country)) +
   geom_col(width = 0.78, colour = "grey35", linewidth = 0.25) +
   coord_flip() +
-  scale_fill_brewer(palette = "Set3", name = "Country") +
+  scale_fill_brewer(palette = "Set2", name = "Country") +
   labs(
-    title = "URC ground elevation (ascending)",
+    title = "Super Rugby ground elevation (ascending)",
     x = NULL,
     y = "Elevation (m a.s.l.)"
   ) +
@@ -168,21 +156,19 @@ ggplot(urc_bar, aes(x = club, y = ground_elevation_m, fill = country)) +
   )
 ```
 
-**Bulls** and **Lions** both play on the South African **Highveld** (Johannesburg and Pretoria), where the 30 arc-second DEM routinely returns **roughly 1.2–1.7 km** above sea level. Those two values sit far above every European and coastal URC ground, so the first chart’s vertical scale is dominated by them: differences of a few tens of metres between, say, Irish and Welsh venues are visually squashed.
+**Bulls** and **Lions** again sit on the **Highveld** and pull the vertical scale upward, masking smaller differences among New Zealand and Australian venues (often coastal or low-lying basins). The chart below drops those two franchises so the **remaining twelve** grounds are easier to compare.
 
-Dropping **Bulls** and **Lions** for a second view is therefore a deliberate **outlier removal** for readability—not a claim they are “wrong”, but a way to **stretch the axis** so relative ordering among the remaining fourteen clubs is visible.
-
-```{r bar-urc-no-highveld, message=FALSE, fig.cap="URC stadium elevation (ascending) excluding Bulls and Lions so finer differences among the other clubs are visible."}
-urc_bar_trim <- urc_elev |>
+```{r bar-super-no-highveld, message=FALSE, fig.cap="Super Rugby elevation (ascending) excluding Bulls and Lions."}
+super_bar_trim <- super_elev |>
   dplyr::filter(!club %in% c("Bulls", "Lions")) |>
   mutate(club = stats::reorder(club, ground_elevation_m))
 
-ggplot(urc_bar_trim, aes(x = club, y = ground_elevation_m, fill = country)) +
+ggplot(super_bar_trim, aes(x = club, y = ground_elevation_m, fill = country)) +
   geom_col(width = 0.78, colour = "grey35", linewidth = 0.25) +
   coord_flip() +
-  scale_fill_brewer(palette = "Set3", name = "Country") +
+  scale_fill_brewer(palette = "Set2", name = "Country") +
   labs(
-    title = "URC ground elevation (ascending), excluding Bulls & Lions",
+    title = "Super Rugby elevation (ascending), excluding Bulls & Lions",
     x = NULL,
     y = "Elevation (m a.s.l.)"
   ) +
@@ -195,66 +181,69 @@ ggplot(urc_bar_trim, aes(x = club, y = ground_elevation_m, fill = country)) +
   )
 ```
 
-## Regional maps (Europe and South Africa)
+## Regional maps (New Zealand, Australia, South Africa)
 
-European URC clubs sit on **IRL / GBR / ITA** tiles; South African sides use **ZAF**. We **crop** each national raster to a modest bounding box around the relevant grounds, **merge** the European crops for one hypsometric panel, and show **South Africa** separately so the aspect scales remain readable.
+We **crop** each national DEM to the stadium footprint, **merge** New Zealand and Australia for one panel, and map **South Africa** separately.
 
 ```{r map-prep, message=FALSE}
 world_sf <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf")
-urc_outline_sf <- world_sf[world_sf$iso_a3 %in% c("GBR", "IRL", "ITA", "ZAF"), ]
-urc_outline <- terra::vect(urc_outline_sf)
+super_outline_sf <- world_sf[world_sf$iso_a3 %in% c("NZL", "AUS", "ZAF"), ]
+super_outline <- terra::vect(super_outline_sf)
 
-eur_df <- urc_clubs |> dplyr::filter(elev_source != "ZAF")
-sa_df <- urc_clubs |> dplyr::filter(elev_source == "ZAF")
+anz_df <- super_clubs |> dplyr::filter(elev_source %in% c("NZL", "AUS"))
+sa_df <- super_clubs |> dplyr::filter(elev_source == "ZAF")
 
-eur_ext <- terra::extend(terra::ext(terra::vect(eur_df, geom = c("lon", "lat"), crs = "EPSG:4326")), 2)
-sa_ext <- terra::extend(terra::ext(terra::vect(sa_df, geom = c("lon", "lat"), crs = "EPSG:4326")), 2)
-
-r_eur <- terra::merge(
-  terra::crop(elev_tiles$IRL, eur_ext),
-  terra::merge(
-    terra::crop(elev_tiles$GBR, eur_ext),
-    terra::crop(elev_tiles$ITA, eur_ext)
-  )
+anz_ext <- terra::extend(
+  terra::ext(terra::vect(anz_df, geom = c("lon", "lat"), crs = "EPSG:4326")),
+  2
 )
-names(r_eur) <- "elevation"
+sa_ext <- terra::extend(
+  terra::ext(terra::vect(sa_df, geom = c("lon", "lat"), crs = "EPSG:4326")),
+  2
+)
+
+r_anz <- terra::merge(
+  terra::crop(elev_tiles$NZL, anz_ext),
+  terra::crop(elev_tiles$AUS, anz_ext)
+)
+names(r_anz) <- "elevation"
 
 r_sa <- terra::crop(elev_tiles$ZAF, sa_ext)
 names(r_sa) <- "elevation"
 
-eur_pts <- terra::vect(eur_df, geom = c("lon", "lat"), crs = "EPSG:4326")
+anz_pts <- terra::vect(anz_df, geom = c("lon", "lat"), crs = "EPSG:4326")
 sa_pts <- terra::vect(sa_df, geom = c("lon", "lat"), crs = "EPSG:4326")
 
-outline_eur <- terra::crop(urc_outline, eur_ext)
-outline_sa <- terra::crop(urc_outline, sa_ext)
+outline_anz <- terra::crop(super_outline, anz_ext)
+outline_sa <- terra::crop(super_outline, sa_ext)
 
-if (!terra::same.crs(r_eur, outline_eur)) {
-  outline_eur <- terra::project(outline_eur, r_eur)
+if (!terra::same.crs(r_anz, outline_anz)) {
+  outline_anz <- terra::project(outline_anz, r_anz)
 }
 if (!terra::same.crs(r_sa, outline_sa)) {
   outline_sa <- terra::project(outline_sa, r_sa)
 }
 ```
 
-```{r map-urc, message=FALSE, fig.cap="URC grounds on cropped national elevation: Europe (IRL/GBR/ITA merge) and South Africa (ZAF)."}
-p_eur <- ggplot() +
-  tidyterra::geom_spatraster(data = r_eur, aes(fill = elevation)) +
+```{r map-super, message=FALSE, fig.cap="Super Rugby grounds on cropped elevation: New Zealand + Australia (merge) and South Africa."}
+p_anz <- ggplot() +
+  tidyterra::geom_spatraster(data = r_anz, aes(fill = elevation)) +
   tidyterra::scale_fill_hypso_tint_c(
     name = "m",
     guide = guide_colorbar(barwidth = unit(2.6, "cm"), title.position = "top")
   ) +
-  tidyterra::geom_spatvector(data = eur_pts, aes(colour = country), size = 2.8, show.legend = TRUE) +
+  tidyterra::geom_spatvector(data = anz_pts, aes(colour = country), size = 2.8, show.legend = TRUE) +
   tidyterra::geom_spatvector_label(
-    data = eur_pts,
+    data = anz_pts,
     aes(label = club),
     size = 2,
     colour = "grey10",
     label.size = 0.12,
     show.legend = FALSE
   ) +
-  tidyterra::geom_spatvector(data = outline_eur, fill = NA, colour = "grey25", linewidth = 0.25) +
-  scale_colour_brewer(palette = "Set2", name = "Country") +
-  labs(title = "URC — Europe") +
+  tidyterra::geom_spatvector(data = outline_anz, fill = NA, colour = "grey25", linewidth = 0.25) +
+  scale_colour_brewer(palette = "Set1", name = "Country") +
+  labs(title = "Super Rugby — New Zealand & Australia") +
   theme_void() +
   theme(
     plot.title = element_text(face = "bold", hjust = 0.5, margin = margin(b = 4)),
@@ -278,8 +267,8 @@ p_sa <- ggplot() +
     show.legend = FALSE
   ) +
   tidyterra::geom_spatvector(data = outline_sa, fill = NA, colour = "grey25", linewidth = 0.25) +
-  scale_colour_brewer(palette = "Set2", name = "Country") +
-  labs(title = "URC — South Africa") +
+  scale_colour_brewer(palette = "Set1", name = "Country") +
+  labs(title = "Super Rugby — South Africa") +
   theme_void() +
   theme(
     plot.title = element_text(face = "bold", hjust = 0.5, margin = margin(b = 4)),
@@ -287,12 +276,12 @@ p_sa <- ggplot() +
     legend.position = "bottom"
   )
 
-p_eur + p_sa + patchwork::plot_layout(ncol = 2, widths = c(1, 1))
+p_anz + p_sa + patchwork::plot_layout(ncol = 2, widths = c(1, 1))
 ```
 
 ### Interactive maps
 
-The maps below use **Leaflet** (via **`htmlwidgets`**). You can **pan**, **zoom**, and click stadium markers for **club**, **venue**, and **extracted elevation**. Marker colours follow the same **elevation colour scale** as the terrain layer. An internet connection is required for the light **basemap** tiles.
+The maps below use **Leaflet** (via **`htmlwidgets`**). You can **pan**, **zoom**, and click stadium markers for **club**, **venue**, and **extracted elevation**. The elevation layer is a **downsampled** version of the same cropped DEM used in the static figures, so it loads quickly in the browser. An internet connection is required for the light **basemap** tiles.
 
 ```{r map-interactive-prep, echo=FALSE, message=FALSE}
 flip_raster_east_west <- function(r) {
@@ -321,6 +310,7 @@ leaflet_elev_map <- function(r, clubs_df) {
     na.color = "#808080"
   )
 
+  # Plain scalars only: named bbox values break htmlwidgets JSON (fitBounds gets objects).
   lng1 <- terra::xmin(r_small)
   lng2 <- terra::xmax(r_small)
   lat1 <- terra::ymin(r_small)
@@ -406,6 +396,8 @@ find_book_root <- function() {
   stop("Could not find Jupyter Book root (_config.yml).")
 }
 
+# Full HTML documents inside .output.text_html are invalid and browsers skip the maps.
+# Save self-contained widgets under book _static/ and embed with iframes.
 include_leaflet_map <- function(map, title, file_stem) {
   maps_dir <- file.path(find_book_root(), "_static", "uk-terrain-rugby", "maps")
   dir.create(maps_dir, recursive = TRUE, showWarnings = FALSE)
@@ -426,21 +418,21 @@ include_leaflet_map <- function(map, title, file_stem) {
   invisible(NULL)
 }
 
-eur_elev <- urc_elev |> dplyr::filter(elev_source != "ZAF")
-sa_elev <- urc_elev |> dplyr::filter(elev_source == "ZAF")
+anz_elev <- super_elev |> dplyr::filter(elev_source %in% c("NZL", "AUS"))
+sa_elev <- super_elev |> dplyr::filter(elev_source == "ZAF")
 ```
 
 ```{r map-interactive, echo=FALSE, message=FALSE, warning=FALSE}
 include_leaflet_map(
-  leaflet_elev_map(r_eur, eur_elev),
-  "URC — Europe (interactive)",
-  "urc_europe"
+  leaflet_elev_map(r_anz, anz_elev),
+  "Super Rugby — New Zealand & Australia (interactive)",
+  "super_rugby_anz"
 )
 include_leaflet_map(
   leaflet_elev_map(r_sa, sa_elev),
-  "URC — South Africa (interactive)",
-  "urc_sa"
+  "Super Rugby — South Africa (interactive)",
+  "super_rugby_sa"
 )
 ```
 
-Coastal **Stormers** and **Sharks** grounds are often only a few metres above sea level in the DEM, while **Bulls** and **Lions** sit on the **Highveld** at roughly **1.3–1.7 km**—patterns that read clearly in both the **bar chart** and the **South Africa** panel.
+Across **New Zealand and Australia**, most franchises sit on **low coastal or basin** terrain in the DEM (e.g. **Blues**, **Waratahs**, **Reds**), while **South Africa** again mixes **sea-level** venues with **Highveld** outliers—useful context when comparing the full competition to **Super Rugby Pacific** today, which no longer includes the South African sides.

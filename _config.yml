@@ -77,6 +77,9 @@ sphinx:
       secondary_sidebar_end: ["sourcelink"]
     html_css_files:
       - css/custom.css
+    exclude_patterns:
+      - "**/_draft/**"
+      - "**/06_top14_elevation_performance*"
 
 # Bibliography
 bibtex_bibfiles:

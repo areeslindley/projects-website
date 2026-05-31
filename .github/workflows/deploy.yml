@@ -57,6 +57,7 @@ jobs:
         with:
           packages: |
             any::IRkernel
+            any::IRdisplay
             any::tidyterra
             any::terra
             any::geodata
@@ -68,6 +69,14 @@ jobs:
             any::rlang
             any::knitr
             any::patchwork
+            any::leaflet
+            any::htmlwidgets
+            any::htmltools
+            any::raster
+            any::jsonlite
+            # any::copula
+            # any::ggrepel
+            # any::tidyr
 
       - name: Register IR Jupyter kernel
         run: Rscript -e "IRkernel::installspec(user = TRUE)"

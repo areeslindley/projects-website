@@ -7,13 +7,13 @@
 
 ## Project Overview
 
-This project uses the **tidyterra** R package to work with raster and vector spatial data in a familiar **tidyverse**-style workflow. We combine freely available global grids—national SRTM-based elevation from **geodata** and (in the first notebook) WorldClim temperature—with country boundaries from **rnaturalearth**, then overlay **English Premiership** and **United Rugby Championship** stadium locations to produce publication-quality maps.
+This project uses the **tidyterra** R package to work with raster and vector spatial data in a familiar **tidyverse**-style workflow. We combine freely available global grids—national SRTM-based elevation from **geodata** and (in the first notebook) WorldClim temperature—with country boundaries from **rnaturalearth**, then overlay **English Premiership**, **United Rugby Championship**, **Super Rugby**, and **French Top 14** stadium locations to produce publication-quality maps.
 
 The emphasis is on reproducible geospatial pipelines: harmonising coordinate reference systems, clipping rasters to national boundaries or regional extents, deriving categorical elevation bands, and linking point observations to gridded terrain.
 
 ## Project Structure
 
-The analysis is organised into three R Markdown notebooks:
+The analysis is organised into five R Markdown notebooks:
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5em; margin: 2em 0;">
 
@@ -35,6 +35,18 @@ The analysis is organised into three R Markdown notebooks:
   <p style="font-size: 0.9em; color: #666; margin: 0;">United Rugby Championship stadiums across Ireland, the UK, Italy, and South Africa</p>
 </div>
 
+<div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #e377c2;">
+  <h3 style="margin-top: 0; color: #c71585;">🌏 4. Super Rugby overlay</h3>
+  <p style="margin-bottom: 0.5em;"><strong><a href="04_super_rugby_overlay.html">Explore →</a></strong></p>
+  <p style="font-size: 0.9em; color: #666; margin: 0;">Super Rugby franchises in New Zealand, Australia, and South Africa — elevation table, bar charts, static maps, and interactive Leaflet maps</p>
+</div>
+
+<div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #2ca02c;">
+  <h3 style="margin-top: 0; color: #2ca02c;">🇫🇷 5. Top 14 overlay</h3>
+  <p style="margin-bottom: 0.5em;"><strong><a href="05_top14_overlay.html">Explore →</a></strong></p>
+  <p style="font-size: 0.9em; color: #666; margin: 0;">French Top 14 grounds on national elevation — table, bar chart, static map, and interactive Leaflet map</p>
+</div>
+
 </div>
 
 ## Key Questions
@@ -43,7 +55,7 @@ The analysis is organised into three R Markdown notebooks:
 
 - How does **tidyterra** let us treat **SpatRaster** objects with **dplyr**-style verbs while keeping raster semantics?
 - What do **multi-layer** rasters represent for monthly climate, and how do we pick representative **seasonal** slices?
-- Where do **English Premiership** and **URC** stadiums sit in regional relief, and what does that imply about geography (e.g. coastal vs Highveld)?
+- Where do **Premiership**, **URC**, **Super Rugby**, and **Top 14** stadiums sit in regional relief, and what does that imply about geography (e.g. coastal vs Highveld vs Massif Central)?
 
 </div>
 
@@ -53,9 +65,9 @@ The analysis is organised into three R Markdown notebooks:
 
 | Source | Role |
 |--------|------|
-| **geodata** | National elevation (`elevation_30s` for GBR, IRL, ITA, ZAF) and WorldClim country extracts (`worldclim_country`) |
+| **geodata** | National elevation (`elevation_30s` for GBR, IRL, ITA, ZAF, NZL, AUS, FRA) and WorldClim country extracts (`worldclim_country`) |
 | **rnaturalearth** | Country boundaries (medium scale) as **sf** / **SpatVector** |
-| **Manual coordinates** | Premiership (10) and URC (16) stadium centre points (WGS84); edit the notebooks to refine |
+| **Manual coordinates** | Premiership (10), URC (16), Super Rugby (14), and Top 14 (14) stadium centre points (WGS84); edit the notebooks to refine |
 
 All downloads require an **internet** connection at build time; files are cached under `tempdir()` by default in the notebooks.
 
@@ -106,7 +118,7 @@ All downloads require an **internet** connection at build time; files are cached
 </div>
 
 <div>
-  ✅ <strong>Club-level</strong> terrain context for Premiership and URC geography
+  ✅ <strong>Club-level</strong> terrain context for Premiership, URC, Super Rugby, and Top 14 geography
 </div>
 
 <div>

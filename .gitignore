@@ -1,6 +1,10 @@
 # Jupyter Book build outputs
 _build/
 .jupyter_cache/
+
+# Generated Leaflet map HTML (rebuilt by 04_super_rugby_overlay notebook)
+_static/uk-terrain-rugby/maps/*
+!_static/uk-terrain-rugby/maps/.gitkeep
 *.ipynb_checkpoints/
 
 # Python

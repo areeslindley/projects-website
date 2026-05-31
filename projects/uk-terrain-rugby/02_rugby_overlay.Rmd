@@ -7,12 +7,15 @@ output:
 jupyter:
   jupytext:
     formats: ipynb,Rmd
-    main_language: R
     text_representation:
       extension: .Rmd
       format_name: rmarkdown
       format_version: '1.2'
       jupytext_version: 1.19.2
+  kernelspec:
+    display_name: R
+    language: R
+    name: ir
 ---
 
 ```{r setup, message=FALSE, warning=FALSE}
@@ -25,6 +28,11 @@ library(dplyr)
 library(sf)
 library(rlang)
 library(knitr)
+library(leaflet)
+library(htmlwidgets)
+library(htmltools)
+library(raster)
+library(IRdisplay)
 ```
 
 ## Reloading the elevation surface
@@ -144,6 +152,153 @@ ggplot() +
     legend.title = element_text(size = 9),
     legend.position = "bottom"
   )
+```
+
+### Interactive map
+
+The map below uses **Leaflet** (via **`htmlwidgets`**). You can **pan**, **zoom**, and click stadium markers for **club**, **region**, and **extracted elevation**. Marker colours follow the same **elevation colour scale** as the terrain layer. An internet connection is required for the light **basemap** tiles.
+
+```{r map-interactive-prep, echo=FALSE, message=FALSE}
+prem_ext <- terra::extend(terra::ext(clubs_sv), 1.5)
+r_prem <- terra::crop(uk_elev_masked, prem_ext)
+
+flip_raster_east_west <- function(r) {
+  mat <- terra::values(r, mat = TRUE)
+  mat <- mat[, rev(seq_len(ncol(mat))), drop = FALSE]
+  terra::values(r) <- mat
+  r
+}
+
+leaflet_elev_map <- function(r, clubs_df) {
+  r_small <- terra::aggregate(r, fact = 4, fun = mean)
+  if (!grepl("4326", terra::crs(r_small, describe = TRUE)$code)) {
+    r_small <- terra::project(r_small, "EPSG:4326")
+  }
+  r_small <- flip_raster_east_west(r_small)
+  vals <- terra::values(r_small)
+  vals <- vals[!is.na(vals)]
+  elev_domain <- range(
+    c(vals, clubs_df$ground_elevation_m),
+    na.rm = TRUE
+  )
+
+  pal <- leaflet::colorNumeric(
+    grDevices::terrain.colors(60),
+    domain = elev_domain,
+    na.color = "#808080"
+  )
+
+  lng1 <- terra::xmin(r_small)
+  lng2 <- terra::xmax(r_small)
+  lat1 <- terra::ymin(r_small)
+  lat2 <- terra::ymax(r_small)
+  bounds_ok <- all(is.finite(c(lng1, lng2, lat1, lat2))) &&
+    lng1 < lng2 &&
+    lat1 < lat2
+  center_lng <- mean(clubs_df$lon, na.rm = TRUE)
+  center_lat <- mean(clubs_df$lat, na.rm = TRUE)
+  marker_fill <- unname(pal(clubs_df$ground_elevation_m))
+
+  map <- leaflet::leaflet(
+    width = "100%",
+    height = 480,
+    options = leaflet::leafletOptions(minZoom = 5)
+  )
+
+  map <- if (bounds_ok) {
+    leaflet::fitBounds(map, lng1, lat1, lng2, lat2)
+  } else {
+    leaflet::setView(map, center_lng, center_lat, zoom = 6)
+  }
+
+  map |>
+    leaflet::addProviderTiles(
+      "CartoDB.Positron",
+      group = "Basemap"
+    ) |>
+    leaflet::addRasterImage(
+      r_small,
+      colors = pal,
+      opacity = 0.78,
+      project = FALSE,
+      group = "Elevation (SRTM)"
+    ) |>
+    leaflet::addLegend(
+      pal = pal,
+      values = vals,
+      title = "Elevation (m)",
+      position = "bottomright",
+      opacity = 0.9
+    ) |>
+    leaflet::addCircleMarkers(
+      lng = clubs_df$lon,
+      lat = clubs_df$lat,
+      radius = 8,
+      stroke = TRUE,
+      weight = 1.5,
+      color = "#333333",
+      fillColor = marker_fill,
+      fillOpacity = 0.92,
+      popup = paste0(
+        "<strong>", clubs_df$club, "</strong><br>",
+        "<em>", clubs_df$region, "</em><br>",
+        round(clubs_df$ground_elevation_m, 1), " m a.s.l."
+      ),
+      group = "Stadiums"
+    ) |>
+    leaflet::addLayersControl(
+      baseGroups = "Basemap",
+      overlayGroups = c("Elevation (SRTM)", "Stadiums"),
+      options = leaflet::layersControlOptions(collapsed = FALSE)
+    )
+}
+
+find_book_root <- function() {
+  wd <- normalizePath(getwd(), winslash = "/", mustWork = FALSE)
+  for (steps in 0:6) {
+    root <- if (steps == 0) {
+      wd
+    } else {
+      normalizePath(
+        file.path(wd, paste(rep("..", steps), collapse = "/")),
+        winslash = "/",
+        mustWork = FALSE
+      )
+    }
+    if (file.exists(file.path(root, "_config.yml"))) {
+      return(root)
+    }
+  }
+  stop("Could not find Jupyter Book root (_config.yml).")
+}
+
+include_leaflet_map <- function(map, title, file_stem) {
+  maps_dir <- file.path(find_book_root(), "_static", "uk-terrain-rugby", "maps")
+  dir.create(maps_dir, recursive = TRUE, showWarnings = FALSE)
+  out_path <- file.path(maps_dir, paste0(file_stem, ".html"))
+  suppressWarnings(htmlwidgets::saveWidget(map, out_path, selfcontained = TRUE))
+  iframe_src <- paste0("../../_static/uk-terrain-rugby/maps/", file_stem, ".html")
+  iframe_html <- sprintf(
+    paste0(
+      "<h4 style=\"text-align:center;font-weight:bold;margin:0.6em 0 0.2em 0;\">%s</h4>",
+      "<iframe src=\"%s\" title=\"%s\" width=\"100%%\" height=\"500\" ",
+      "style=\"border:none;\"></iframe>"
+    ),
+    htmltools::htmlEscape(title),
+    iframe_src,
+    htmltools::htmlEscape(title)
+  )
+  IRdisplay::display_html(iframe_html)
+  invisible(NULL)
+}
+```
+
+```{r map-interactive, echo=FALSE, message=FALSE, warning=FALSE}
+include_leaflet_map(
+  leaflet_elev_map(r_prem, clubs_elev),
+  "English Premiership (interactive)",
+  "premiership_uk"
+)
 ```
 
 **`geom_spatvector_label()`** draws text from **SpatVector** attributes; where labels crowd together in static output, **ggrepel** could be swapped in with an **sf** conversion for automatic jittering.
