@@ -5,6 +5,11 @@ _build/
 # Generated Leaflet map HTML (rebuilt by 04_super_rugby_overlay notebook)
 _static/uk-terrain-rugby/maps/*
 !_static/uk-terrain-rugby/maps/.gitkeep
+# Generated Leaflet map HTML (rebuilt by uk-urban-systems-network notebooks 06/07)
+_static/uk-urban-systems-network/maps/*
+!_static/uk-urban-systems-network/maps/.gitkeep
+_static/uk-urban-systems-network/maps/*_files/
+_static/uk-terrain-rugby/maps/*_files/
 *.ipynb_checkpoints/
 
 # Python
@@ -35,3 +40,7 @@ Thumbs.db
 
 # Data files (keep for now, but can be git-lfs if large)
 # data/*.csv
+
+# UK urban systems network — cached RDS (remove this line if total size < 50 MB and you want to commit)
+projects/uk-urban-systems-network/data/*.rds
+projects/uk-urban-systems-network/data/raw/

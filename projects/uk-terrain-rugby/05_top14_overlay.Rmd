@@ -335,7 +335,15 @@ include_leaflet_map <- function(map, title, file_stem) {
   maps_dir <- file.path(find_book_root(), "_static", "uk-terrain-rugby", "maps")
   dir.create(maps_dir, recursive = TRUE, showWarnings = FALSE)
   out_path <- file.path(maps_dir, paste0(file_stem, ".html"))
-  suppressWarnings(htmlwidgets::saveWidget(map, out_path, selfcontained = TRUE))
+  book_root <- getwd()
+  for (i in seq_len(8)) {
+    if (file.exists(file.path(book_root, "_config.yml"))) break
+    parent <- dirname(book_root)
+    if (identical(parent, book_root)) break
+    book_root <- parent
+  }
+  source(file.path(book_root, "R", "leaflet_save_widget.R"), local = TRUE)
+  save_leaflet_widget_selfcontained(map, out_path)
   iframe_src <- paste0("../../_static/uk-terrain-rugby/maps/", file_stem, ".html")
   iframe_html <- sprintf(
     paste0(

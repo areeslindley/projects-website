@@ -37,7 +37,24 @@
 .top-banner__logo svg {
     width: 100%;
     height: 100%;
+    max-width: 1.9rem;
+    max-height: 1.9rem;
     display: block;
+}
+
+/* Fallback if custom.css fails to load: cap announcement graphics */
+.bd-header-announcement svg {
+    max-width: 2rem;
+    max-height: 2rem;
+}
+
+.bd-header-announcement img {
+    max-width: 2rem;
+    max-height: 2rem;
+    width: auto;
+    height: auto;
+    margin: 0;
+    display: inline-block;
 }
 
 .top-banner__name {
@@ -200,12 +217,36 @@ code {
     border-left-color: var(--warning-color);
 }
 
-/* Image responsiveness */
-img {
+/* Image responsiveness (content only — do not shrink navbar / theme logos) */
+.bd-main .bd-content img,
+article.bd-article img,
+.cell_output img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 1em auto;
+}
+
+.navbar-brand img.logo__image,
+.navbar-brand img {
+    max-width: none;
+    width: auto;
+    height: 2.5rem;
+    margin: 0;
+    display: inline-block;
+}
+
+.leaflet-map-embed {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.leaflet-map-embed iframe {
+    width: 100%;
+    max-width: 100%;
+    border: none;
+    display: block;
 }
 
 /* Table styling */

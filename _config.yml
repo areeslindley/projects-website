@@ -2,8 +2,6 @@
 title: "Alun's Data Science Portfolio"
 author: "Alun Rees"
 copyright: "2026"
-logo: "_static/images/profile.jpg"
-
 # Execute notebooks configuration
 execute:
   execute_notebooks: auto
@@ -14,7 +12,6 @@ execute:
 sphinx:
   config:
     html_title: "Alun's Data Science Portfolio"
-    html_logo: "_static/images/profile.jpg"
     html_favicon: "_static/images/profile.jpg"
     html_theme: "sphinx_book_theme"
     html_baseurl: "https://areeslindley.github.io/projects-website/"
@@ -22,8 +19,8 @@ sphinx:
       announcement: >
         <div class="top-banner">
           <div class="top-banner__left">
-            <span class="top-banner__logo" aria-hidden="true">
-              <svg viewBox="0 0 80 80" role="img">
+            <span class="top-banner__logo" aria-hidden="true" style="width:1.9rem;height:1.9rem;display:inline-flex;flex-shrink:0;">
+              <svg viewBox="0 0 80 80" role="img" width="30" height="30" style="width:100%;height:100%;display:block;">
                 <defs>
                   <linearGradient id="arlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#79c7ff"></stop>
@@ -58,12 +55,13 @@ sphinx:
             <details class="top-banner__menu">
               <summary>Navigate</summary>
               <div class="top-banner__dropdown">
-                <a href="{{ pathto('intro') }}">Home</a>
-                <a href="{{ pathto('about') }}">About</a>
-                <a href="{{ pathto('projects/titanic/index') }}">Titanic</a>
-                <a href="{{ pathto('projects/french-rugby-voronoi/index') }}">French Rugby Voronoi</a>
-                <a href="{{ pathto('projects/beatles-discography/index') }}">Beatles Discography</a>
-                <a href="{{ pathto('projects/uk-terrain-rugby/index') }}">UK Terrain Rugby</a>
+                <a href="https://areeslindley.github.io/projects-website/intro.html">Home</a>
+                <a href="https://areeslindley.github.io/projects-website/about.html">About</a>
+                <a href="https://areeslindley.github.io/projects-website/projects/titanic/index.html">Titanic</a>
+                <a href="https://areeslindley.github.io/projects-website/projects/french-rugby-voronoi/index.html">French Rugby Voronoi</a>
+                <a href="https://areeslindley.github.io/projects-website/projects/beatles-discography/index.html">Beatles Discography</a>
+                <a href="https://areeslindley.github.io/projects-website/projects/uk-terrain-rugby/index.html">UK Terrain Rugby</a>
+                <a href="https://areeslindley.github.io/projects-website/projects/uk-urban-systems-network/index.html">UK Urban Systems</a>
               </div>
             </details>
           </div>
@@ -80,6 +78,10 @@ sphinx:
     exclude_patterns:
       - "**/_draft/**"
       - "**/06_top14_elevation_performance*"
+      - "**/*_files/**"
+
+exclude_patterns:
+  - "**/*_files/**"
 
 # Bibliography
 bibtex_bibfiles:

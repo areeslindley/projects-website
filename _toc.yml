@@ -22,3 +22,12 @@ chapters:
       - file: projects/uk-terrain-rugby/03_urc_overlay
       - file: projects/uk-terrain-rugby/04_super_rugby_overlay
       - file: projects/uk-terrain-rugby/05_top14_overlay
+  - file: projects/uk-urban-systems-network/index
+    sections:
+      - file: projects/uk-urban-systems-network/01_introduction
+      - file: projects/uk-urban-systems-network/02_data_acquisition
+      - file: projects/uk-urban-systems-network/03_data_cleaning
+      - file: projects/uk-urban-systems-network/04_nodes
+      - file: projects/uk-urban-systems-network/05_flows
+      - file: projects/uk-urban-systems-network/06_partition
+      - file: projects/uk-urban-systems-network/07_final_map

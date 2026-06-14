@@ -6,6 +6,18 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
 
+<div style="background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🕸️</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/uk-urban-systems-network/index.md" style="color: white; text-decoration: none;">UK Urban Systems Network</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">A UK replication of the French <em>systèmes urbains régionaux</em> cartogram: TTWA nodes, census commuting flows, and Nystuen–Dacey dominant-flow partitions built in R.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Geospatial Analysis</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Network Analysis</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Census</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">R</span>
+  </div>
+</div>
+
 <div style="background: linear-gradient(135deg, #1f4e79 0%, #2d6a4f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🗺️</div>
   <h3 style="color: white; margin-top: 0;"><a href="projects/uk-terrain-rugby/index.md" style="color: white; text-decoration: none;">UK Terrain &amp; Rugby Geography</a></h3>

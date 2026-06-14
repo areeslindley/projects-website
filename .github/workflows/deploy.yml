@@ -65,15 +65,26 @@ jobs:
             any::rnaturalearthdata
             any::ggplot2
             any::dplyr
+            any::tidyverse
             any::sf
+            any::sfnetworks
+            any::tidygraph
+            any::igraph
+            any::ggraph
+            any::scales
+            any::here
             any::rlang
             any::knitr
             any::patchwork
             any::leaflet
             any::htmlwidgets
             any::htmltools
+            any::data.table
+            any::httr2
+            any::readxl
             any::raster
             any::jsonlite
+            any::remotes
 
       - name: Register IR Jupyter kernel
         run: Rscript -e "IRkernel::installspec(user = TRUE)"
@@ -85,6 +96,7 @@ jobs:
           jupyter-book --version
           # Build using classic Jupyter Book
           jupyter-book build . --all
+          bash scripts/prune_htmlwidget_deps.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
