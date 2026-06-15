@@ -19,25 +19,25 @@ This analysis is organized into four interconnected notebooks:
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #1f77b4;">
   <h3 style="margin-top: 0; color: #1f77b4;">📊 1. Data Exploration</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="01_exploration.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="01_exploration.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Initial profiling, univariate and bivariate analysis, missing data patterns</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #ff7f0e;">
   <h3 style="margin-top: 0; color: #ff7f0e;">🧹 2. Data Cleaning</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="02_cleaning.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="02_cleaning.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Handling missing values, outlier detection, feature engineering</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #2ca02c;">
   <h3 style="margin-top: 0; color: #2ca02c;">🤖 3. Modeling</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="03_modeling.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="03_modeling.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Training and comparing multiple classification algorithms</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #d62728;">
   <h3 style="margin-top: 0; color: #d62728;">📈 4. Results</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="04_results.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="04_results.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Model comparison, interpretation, and final insights</p>
 </div>
 
@@ -155,5 +155,5 @@ By the end of this analysis, we'll have:
 
 <div style="text-align: center; margin: 2em 0; padding: 1.5em; background: #f0f0f0; border-radius: 8px;">
   <p style="font-size: 1.2em; margin: 0;"><strong>Ready to explore?</strong></p>
-  <p style="margin: 0.5em 0 0 0;"><a href="01_exploration.ipynb" style="background: #1f77b4; color: white; padding: 0.7em 2em; text-decoration: none; border-radius: 5px; display: inline-block;">Start with Data Exploration →</a></p>
+  <p style="margin: 0.5em 0 0 0;"><a href="01_exploration.html" style="background: #1f77b4; color: white; padding: 0.7em 2em; text-decoration: none; border-radius: 5px; display: inline-block;">Start with Data Exploration →</a></p>
 </div>

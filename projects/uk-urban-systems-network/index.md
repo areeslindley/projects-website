@@ -26,6 +26,12 @@ France’s 2011 cartogram showed how 26 *systèmes urbains régionaux* emerge fr
 - **Partition:** Nystuen–Dacey dominant-flow / nodal regions—implemented explicitly in R; no `cluster_louvain` or `cluster_infomap`.
 - **Maps:** Static PNG figures plus **interactive Leaflet** widgets in chapters 06 and 07 (pan/zoom, TTWA popups, country layer toggles).
 
+## Preview figures
+
+![UK pipeline schematic](figures/01_pipeline_schematic.png)
+
+![UK regional urban systems cartogram](figures/07_final_map.png)
+
 ## Project structure
 
 Seven notebooks build the map step by step:
@@ -34,43 +40,43 @@ Seven notebooks build the map step by step:
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #2c3e50;">
   <h3 style="margin-top: 0; color: #2c3e50;">1. Introduction</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="01_introduction.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="01_introduction.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">French inspiration, UK pipeline overview, side-by-side schematic</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #4a6741;">
   <h3 style="margin-top: 0; color: #4a6741;">2. Data acquisition</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="02_data_acquisition.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="02_data_acquisition.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">UK TTWA boundaries, EW 2021 + Scotland 2022 OD flows</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #6b8e6b;">
   <h3 style="margin-top: 0; color: #6b8e6b;">3. Data cleaning</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="03_data_cleaning.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="03_data_cleaning.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">MSOA/IZ→TTWA aggregation, edge filtering, centroids</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #8b7355;">
   <h3 style="margin-top: 0; color: #8b7355;">4. Nodes</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="04_nodes.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="04_nodes.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">TTWA centroids scaled by working-age population</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #5d6d7e;">
   <h3 style="margin-top: 0; color: #5d6d7e;">5. Flows</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="05_flows.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="05_flows.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Monochrome network edges weighted by flow volume</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #7d6608;">
   <h3 style="margin-top: 0; color: #7d6608;">6. Partition</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="06_partition.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="06_partition.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Nystuen–Dacey regions + interactive Leaflet map</p>
 </div>
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #1a5276;">
   <h3 style="margin-top: 0; color: #1a5276;">7. Final map</h3>
-  <p style="margin-bottom: 0.5em;"><strong><a href="07_final_map.ipynb">Explore →</a></strong></p>
+  <p style="margin-bottom: 0.5em;"><strong><a href="07_final_map.html">Explore →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Choropleth cartogram, London inset, interactive Leaflet</p>
 </div>
 
@@ -108,7 +114,7 @@ Rscript projects/uk-urban-systems-network/scripts/run_pipeline.R
 | **statistics.gov.scot** | Data Zone 2011 lookup (IZ → TTWA) |
 | **Géographie-cités / DATAR (2011)** | Conceptual and visual reference cartogram |
 
-See [`data/raw/README.md`](data/raw/README.md) for manual download paths. Place the French reference image at `_static/uk-urban-systems-network/french_datar_2011.png` before building chapter 01.
+See [Data acquisition](02_data_acquisition.md) for download paths and ingest details. Place the French reference image at `_static/uk-urban-systems-network/french_datar_2011.png` before building chapter 01.
 
 Interactive map HTML is written to `_static/uk-urban-systems-network/maps/` when notebooks 06–07 run (gitignored; rebuilt on CI).
 
@@ -116,5 +122,5 @@ Interactive map HTML is written to `_static/uk-urban-systems-network/maps/` when
 
 <div style="text-align: center; margin: 2em 0; padding: 1.5em; background: #f0f0f0; border-radius: 8px;">
   <p style="font-size: 1.2em; margin: 0;"><strong>Ready to explore?</strong></p>
-  <p style="margin: 0.5em 0 0 0;"><a href="01_introduction.ipynb" style="background: #2c3e50; color: white; padding: 0.7em 2em; text-decoration: none; border-radius: 5px; display: inline-block;">Start with the introduction →</a></p>
+  <p style="margin: 0.5em 0 0 0;"><a href="01_introduction.html" style="background: #2c3e50; color: white; padding: 0.7em 2em; text-decoration: none; border-radius: 5px; display: inline-block;">Start with the introduction →</a></p>
 </div>

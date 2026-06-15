@@ -85,9 +85,15 @@ jobs:
             any::raster
             any::jsonlite
             any::remotes
+            any::png
 
       - name: Register IR Jupyter kernel
         run: Rscript -e "IRkernel::installspec(user = TRUE)"
+
+      - name: Fetch UK urban systems data and run pipeline
+        run: |
+          Rscript projects/uk-urban-systems-network/scripts/fetch_live_data.R
+          Rscript projects/uk-urban-systems-network/scripts/run_pipeline.R
 
       - name: Build Jupyter Book
         run: |
@@ -97,6 +103,15 @@ jobs:
           # Build using classic Jupyter Book
           jupyter-book build . --all
           bash scripts/prune_htmlwidget_deps.sh
+          bash scripts/sync_build_static.sh
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check internal links
+        run: bash scripts/check_links.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
