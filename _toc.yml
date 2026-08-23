@@ -31,3 +31,21 @@ chapters:
       - file: projects/uk-urban-systems-network/05_flows
       - file: projects/uk-urban-systems-network/06_partition
       - file: projects/uk-urban-systems-network/07_final_map
+  - file: projects/time-series-analysis/index
+    sections:
+      - file: projects/time-series-analysis/01_introduction
+      - file: projects/time-series-analysis/02_ses
+      - file: projects/time-series-analysis/03_holt_winters
+      - file: projects/time-series-analysis/04_fourier
+      - file: projects/time-series-analysis/05_arma_arima
+      - file: projects/time-series-analysis/06_sarima
+      - file: projects/time-series-analysis/07_state_space
+      - file: projects/time-series-analysis/08_model_comparison
+  - file: projects/cricket-win-probability/index
+    sections:
+      - file: projects/cricket-win-probability/01_introduction
+      - file: projects/cricket-win-probability/02_game_state
+      - file: projects/cricket-win-probability/03_dls_resources
+      - file: projects/cricket-win-probability/04_modelling
+      - file: projects/cricket-win-probability/05_live_charts
+      - file: projects/cricket-win-probability/06_evaluation_case_studies

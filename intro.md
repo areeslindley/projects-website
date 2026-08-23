@@ -6,6 +6,30 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
 
+<div style="background: linear-gradient(135deg, #1b5e20 0%, #f9a825 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🏏</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/cricket-win-probability/index.html" style="color: white; text-decoration: none;">ODI Win Probability: From DLS to Data</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Ball-by-ball win probability for one-day cricket — simplified DLS resource baselines, logistic regression and LightGBM models, and interactive chase charts.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Sports Analytics</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Calibration</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Cricsheet</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Plotly</span>
+  </div>
+</div>
+
+<div style="background: linear-gradient(135deg, #1565c0 0%, #00838f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">📈</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/time-series-analysis/index.html" style="color: white; text-decoration: none;">Time Series Analysis: Classical Methods</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">A rigorous tour of classical forecasting — exponential smoothing, Fourier methods, ARIMA/SARIMA, and state-space models — applied to benchmark datasets from Air Passengers to Mauna Loa CO₂.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Time Series</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Forecasting</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">statsmodels</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Seasonal Adjustment</span>
+  </div>
+</div>
+
 <div style="background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🕸️</div>
   <h3 style="color: white; margin-top: 0;"><a href="projects/uk-urban-systems-network/index.html" style="color: white; text-decoration: none;">UK Urban Systems Network</a></h3>
