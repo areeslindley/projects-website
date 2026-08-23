@@ -1,5 +1,8 @@
 # Fetch live ONS / NOMIS inputs and write RDS caches for uk-urban-systems-network.
 # Run from repo root: Rscript projects/uk-urban-systems-network/scripts/fetch_live_data.R
+#
+# If processed RDS caches already exist, skip network fetches unless
+# FORCE_URBAN_DATA_REFRESH=1 is set (keeps CI reliable when NOMIS is slow).
 
 suppressPackageStartupMessages({
   library(tidyverse)
@@ -15,6 +18,44 @@ data_dir <- file.path(proj_dir, "data")
 raw_dir <- file.path(data_dir, "raw")
 scripts_dir <- file.path(proj_dir, "scripts")
 dir.create(raw_dir, recursive = TRUE, showWarnings = FALSE)
+
+CACHE_RDS <- c("ttwa_boundaries.rds", "od_flows_raw.rds", "msoa_ttwa_lookup.rds")
+cache_paths <- file.path(data_dir, CACHE_RDS)
+force_refresh <- identical(Sys.getenv("FORCE_URBAN_DATA_REFRESH"), "1")
+
+if (all(file.exists(cache_paths)) && !force_refresh) {
+  message(
+    "Using existing RDS caches in ", data_dir, "\n",
+    "Set FORCE_URBAN_DATA_REFRESH=1 to re-download ONS/NOMIS inputs."
+  )
+  quit(save = "no", status = 0)
+}
+
+# NOMIS zip is large; default R timeout (60s) often fails in CI.
+options(timeout = max(900, getOption("timeout", 60)))
+
+download_with_retries <- function(url, dest, tries = 4L) {
+  for (i in seq_len(tries)) {
+    message("Download attempt ", i, "/", tries, ": ", url)
+    ok <- tryCatch(
+      {
+        utils::download.file(url, destfile = dest, mode = "wb", quiet = FALSE, method = "libcurl")
+        TRUE
+      },
+      error = function(e) {
+        message("  failed: ", conditionMessage(e))
+        FALSE
+      }
+    )
+    if (ok && file.exists(dest) && isTRUE(file.info(dest)$size > 1e5)) {
+      message("  saved ", format(file.info(dest)$size, big.mark = ","), " bytes")
+      return(invisible(TRUE))
+    }
+    if (file.exists(dest)) file.remove(dest)
+    Sys.sleep(5 * i)
+  }
+  stop("Failed to download after ", tries, " attempts: ", url)
+}
 
 source(file.path(scripts_dir, "fetch_scotland_od.R"))
 
@@ -49,6 +90,8 @@ fetch_arcgis_attributes <- function(base_url, out_fields, page_size = 2000L) {
     resp <- jsonlite::fromJSON(
       httr2::request(base_url) |>
         httr2::req_url_query(!!!qs) |>
+        httr2::req_timeout(120) |>
+        httr2::req_retry(max_tries = 3) |>
         httr2::req_perform() |>
         httr2::resp_body_string(),
       flatten = TRUE
@@ -99,8 +142,8 @@ msoa_ttwa <- msoa_lsoa_ew |>
 message("MSOA→TTWA pairs: ", nrow(msoa_ttwa))
 
 message("=== NOMIS ODWP01EW (England & Wales 2021) ===")
-if (!file.exists(OD_ZIP_PATH)) {
-  utils::download.file(OD_ZIP_URL, OD_ZIP_PATH, mode = "wb", quiet = TRUE)
+if (!file.exists(OD_ZIP_PATH) || isTRUE(file.info(OD_ZIP_PATH)$size < 1e5)) {
+  download_with_retries(OD_ZIP_URL, OD_ZIP_PATH)
 }
 if (!file.exists(OD_MSOA_CSV)) {
   utils::unzip(OD_ZIP_PATH, files = "ODWP01EW_MSOA.csv", exdir = raw_dir)

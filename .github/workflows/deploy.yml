@@ -92,6 +92,7 @@ jobs:
 
       - name: Fetch UK urban systems data and run pipeline
         run: |
+          # Uses committed RDS caches by default (skip NOMIS). Set FORCE_URBAN_DATA_REFRESH=1 to re-download.
           Rscript projects/uk-urban-systems-network/scripts/fetch_live_data.R
           Rscript projects/uk-urban-systems-network/scripts/run_pipeline.R
 

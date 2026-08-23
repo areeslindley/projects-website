@@ -41,6 +41,6 @@ Thumbs.db
 # Data files (keep for now, but can be git-lfs if large)
 # data/*.csv
 
-# UK urban systems network — cached RDS (remove this line if total size < 50 MB and you want to commit)
-projects/uk-urban-systems-network/data/*.rds
+# UK urban systems network — keep bulky raw NOMIS/ONS downloads local.
+# Processed RDS caches are committed so CI does not depend on NOMIS uptime.
 projects/uk-urban-systems-network/data/raw/
