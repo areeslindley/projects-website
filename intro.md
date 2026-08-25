@@ -1,10 +1,22 @@
 # Data Science Portfolio
 
-Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, time series analysis, and applied statistics.
+Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, time series analysis, NLP, and applied statistics.
 
 ## Featured Projects
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
+
+<div style="background: linear-gradient(135deg, #4a0e0e 0%, #c9a227 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">📚</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/literary-nlp/index.html" style="color: white; text-decoration: none;">Literary NLP: Sentiment Across Classic Novels</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Sentiment, emotion, term frequency, word clouds, and character presence mapped through eight public-domain novels — from <em>Dracula</em> to <em>A Christmas Carol</em>.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">NLP</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Sentiment</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">VADER</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Plotly</span>
+  </div>
+</div>
 
 <div style="background: linear-gradient(135deg, #1b5e20 0%, #f9a825 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🏏</div>
@@ -92,9 +104,9 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 ## Technical Stack
 
-**Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
+**Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • NLP • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
 
-**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • geopandas • shapely • folium  
+**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • nltk • geopandas • shapely • folium  
 **Key Libraries (R):** rjd3/JDemetra+ • KFAS • xts • tidyverse • Shiny • Quarto
 
 ## About This Portfolio

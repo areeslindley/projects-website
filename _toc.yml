@@ -49,3 +49,11 @@ chapters:
       - file: projects/cricket-win-probability/04_modelling
       - file: projects/cricket-win-probability/05_live_charts
       - file: projects/cricket-win-probability/06_evaluation_case_studies
+  - file: projects/literary-nlp/index
+    sections:
+      - file: projects/literary-nlp/01_corpus
+      - file: projects/literary-nlp/02_sentiment
+      - file: projects/literary-nlp/03_emotions
+      - file: projects/literary-nlp/04_term_frequency
+      - file: projects/literary-nlp/05_wordclouds
+      - file: projects/literary-nlp/06_characters
