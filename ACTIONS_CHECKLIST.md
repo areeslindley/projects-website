@@ -33,7 +33,7 @@ Click on the failed run, then click the **"deploy"** job. You'll see steps like:
 - **Error?** Repository access issue
 
 ### 2. Set up Python
-- Should install Python 3.9
+- Should install Python 3.11
 - **Error?** Rare, but check Python version
 
 ### 3. Install dependencies

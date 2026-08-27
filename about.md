@@ -12,7 +12,7 @@ My doctoral research focused on computational methods in physics, developing ski
 
 ## Research Interests
 
-- **Statistical Methodology**: Developing robust methods for official statistics
+- **Statistical Methodology**: Official-statistics methods, including survey estimation and small-area models (Fay–Herriot / EBLUP)
 - **Machine Learning**: Applied ML for classification, regression, and time series
 - **Time Series Analysis**: Seasonal adjustment, forecasting, and state-space modeling
 - **Reproducible Research**: Best practices for statistical computing and documentation
@@ -26,8 +26,8 @@ My doctoral research focused on computational methods in physics, developing ski
 ## Skills & Expertise
 
 ### Technical Skills
-- **Programming**: Python (pandas, scikit-learn, numpy, matplotlib, plotly), R (tidyverse, rjd3/JDemetra+, KFAS, xts, Shiny, R Markdown/Quarto)
-- **Statistical Methods**: Seasonal adjustment (X-13ARIMA-SEATS, TRAMO-SEATS), state-space modelling, regression, classification, time series analysis, Bayesian methods
+- **Programming**: Python (pandas, scikit-learn, numpy, matplotlib, plotly, pymc), R (tidyverse, rjd3/JDemetra+, KFAS, xts, Shiny, R Markdown/Quarto)
+- **Statistical Methods**: Seasonal adjustment (X-13ARIMA-SEATS, TRAMO-SEATS), state-space modelling, small-area estimation (Fay–Herriot), regression, classification, time series analysis, Bayesian methods
 - **Machine Learning**: Supervised learning, ensemble methods, model interpretation
 - **Data Visualization**: Creating clear, informative visualizations for technical and non-technical audiences
 

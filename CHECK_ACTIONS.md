@@ -44,7 +44,7 @@ Click on the failed run, then click on the "deploy" job. Look for:
 Expand each step in the workflow to see detailed logs:
 
 - **Checkout** - Should complete quickly
-- **Set up Python** - Should install Python 3.9
+- **Set up Python** - Should install Python 3.11
 - **Install dependencies** - Should install packages from requirements.txt
 - **Build Jupyter Book** - This is the critical step - look for errors here
 - **Setup Pages** - Should configure GitHub Pages

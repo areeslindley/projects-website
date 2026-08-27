@@ -1,0 +1,5 @@
+Contains public sector information licensed under the Open Government Licence v3.0.
+
+Source: Office for National Statistics and Nomis (official census and labour market statistics).
+https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+https://www.nomisweb.co.uk/

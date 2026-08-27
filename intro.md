@@ -1,10 +1,22 @@
 # Data Science Portfolio
 
-Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, time series analysis, NLP, and applied statistics.
+Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, time series analysis, NLP, small-area estimation, and applied statistics.
 
 ## Featured Projects
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
+
+<div style="background: linear-gradient(135deg, #0d3b4c 0%, #2a9d8f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">📐</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/small-area-estimation/index.html" style="color: white; text-decoration: none;">Small Area Estimation for UK Local Authorities</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">Fay–Herriot EBLUP and a Bayesian hierarchical model for APS unemployment rates, validated against ONS published model-based estimates.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Official Statistics</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Fay–Herriot</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">PyMC</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Nomis</span>
+  </div>
+</div>
 
 <div style="background: linear-gradient(135deg, #4a0e0e 0%, #c9a227 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">📚</div>
@@ -106,7 +118,7 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 **Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • NLP • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
 
-**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • nltk • geopandas • shapely • folium  
+**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • nltk • geopandas • shapely • folium • pymc  
 **Key Libraries (R):** rjd3/JDemetra+ • KFAS • xts • tidyverse • Shiny • Quarto
 
 ## About This Portfolio

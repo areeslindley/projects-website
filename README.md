@@ -14,6 +14,7 @@ Brief summaries of what is in the book today. This list will grow as new chapter
 
 | Project | Description |
 | -------- | ----------- |
+| **Small area estimation** | Fay–Herriot EBLUP and Bayesian hierarchical model for APS unemployment rates at UK local-authority level, validated against ONS model-based estimates. |
 | **Literary NLP** | Sentiment, emotion, term frequency, word clouds, and character presence mapped through eight public-domain novels from Project Gutenberg. |
 | **Titanic survival analysis** | End-to-end classification workflow: exploratory analysis, data cleaning, modelling, and evaluation with clear narrative and figures. |
 | **French rugby Voronoi analysis** | Geospatial view of French professional rugby using Voronoi-style territory ideas, computational geometry, and interactive mapping for sports analytics. |

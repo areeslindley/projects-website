@@ -45,3 +45,4 @@ Thumbs.db
 # Processed RDS caches are committed so CI does not depend on NOMIS uptime.
 projects/uk-urban-systems-network/data/raw/
 projects/literary-nlp/data/raw/
+projects/small-area-estimation/data/raw/

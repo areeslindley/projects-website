@@ -2,6 +2,14 @@ format: jb-book
 root: intro
 chapters:
   - file: about
+  - file: projects/small-area-estimation/index
+    sections:
+      - file: projects/small-area-estimation/01_introduction
+      - file: projects/small-area-estimation/02_data_acquisition
+      - file: projects/small-area-estimation/03_direct_estimates
+      - file: projects/small-area-estimation/04_eblup
+      - file: projects/small-area-estimation/05_bayesian
+      - file: projects/small-area-estimation/06_model_comparison
   - file: projects/titanic/index
     sections:
       - file: projects/titanic/01_exploration
