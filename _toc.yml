@@ -57,6 +57,13 @@ chapters:
       - file: projects/cricket-win-probability/04_modelling
       - file: projects/cricket-win-probability/05_live_charts
       - file: projects/cricket-win-probability/06_evaluation_case_studies
+  - file: projects/cancer-imaging/index
+    sections:
+      - file: projects/cancer-imaging/01_images
+      - file: projects/cancer-imaging/02_classical_models
+      - file: projects/cancer-imaging/03_deep_learning
+      - file: projects/cancer-imaging/04_interpretation
+      - file: projects/cancer-imaging/05_evaluation
   - file: projects/literary-nlp/index
     sections:
       - file: projects/literary-nlp/01_corpus

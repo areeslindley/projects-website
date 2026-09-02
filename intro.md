@@ -1,10 +1,22 @@
 # Data Science Portfolio
 
-Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, time series analysis, NLP, small-area estimation, and applied statistics.
+Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National Statistics with a PhD in Computational Physics. This portfolio showcases projects spanning machine learning, computer vision, time series analysis, NLP, small-area estimation, and applied statistics.
 
 ## Featured Projects
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
+
+<div style="background: linear-gradient(135deg, #0b3d4a 0%, #c0392b 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">🩺</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/cancer-imaging/index.html" style="color: white; text-decoration: none;">Finding Cancer in Ultrasound Images</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">A model ladder on public BreastMNIST ultrasound — from PCA-logistic and HOG forests to a small CNN and ResNet-18 transfer, with Grad-CAM explanations and a full metric dashboard.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Computer Vision</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Medical Imaging</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Grad-CAM</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">PyTorch</span>
+  </div>
+</div>
 
 <div style="background: linear-gradient(135deg, #0d3b4c 0%, #2a9d8f 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">📐</div>
@@ -116,9 +128,9 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 ## Technical Stack
 
-**Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • NLP • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
+**Languages & Tools:** Python • R • SQL • Statistical Modelling • Machine Learning • Computer Vision • NLP • Geospatial Analysis • Time Series • Seasonal Adjustment • Reproducible Analytical Pipelines
 
-**Key Libraries (Python):** scikit-learn • pandas • numpy • matplotlib • plotly • nltk • geopandas • shapely • folium • pymc  
+**Key Libraries (Python):** scikit-learn • PyTorch • pandas • numpy • matplotlib • plotly • nltk • geopandas • shapely • folium • pymc  
 **Key Libraries (R):** rjd3/JDemetra+ • KFAS • xts • tidyverse • Shiny • Quarto
 
 ## About This Portfolio

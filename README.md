@@ -14,6 +14,7 @@ Brief summaries of what is in the book today. This list will grow as new chapter
 
 | Project | Description |
 | -------- | ----------- |
+| **Cancer imaging** | BreastMNIST ultrasound: dummy → PCA-logistic → HOG/LBP forest → CNN → ResNet-18, with Grad-CAM and a full classification-metric dashboard. |
 | **Small area estimation** | Fay–Herriot EBLUP and Bayesian hierarchical model for APS unemployment rates at UK local-authority level, validated against ONS model-based estimates. |
 | **Literary NLP** | Sentiment, emotion, term frequency, word clouds, and character presence mapped through eight public-domain novels from Project Gutenberg. |
 | **Titanic survival analysis** | End-to-end classification workflow: exploratory analysis, data cleaning, modelling, and evaluation with clear narrative and figures. |
