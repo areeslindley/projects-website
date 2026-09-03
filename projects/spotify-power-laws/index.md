@@ -15,16 +15,22 @@ Kaggle will sell you 50,000 rows and 33 columns of "Spotify artist streaming ana
 
 The honest conclusion is the one worth publishing: **flexible models buy nothing at this generating process, leaked features buy \(R^2 = 1\), and the planted superstar tail is catalog size rather than quality.**
 
-## The page
+## The pages
 
-One executable chapter. Code lives in `src/spotify_powerlaws/` and numbered scripts; the notebook loads artifacts.
+Code lives in `src/spotify_powerlaws/` and numbered scripts; notebooks load artifacts.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5em; margin: 2em 0;">
 
 <div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #0d3b4c;">
-  <h3 style="margin-top: 0; color: #0d3b4c;">Analysis</h3>
+  <h3 style="margin-top: 0; color: #0d3b4c;">1. Streams and leakage</h3>
   <p style="margin-bottom: 0.5em;"><strong><a href="01_analysis.html">Read the page →</a></strong></p>
   <p style="font-size: 0.9em; color: #666; margin: 0;">Forensics, estimand, grouped CV, model ladder, power-law tests, conformal coverage</p>
+</div>
+
+<div style="background: #f8f9fa; padding: 1.5em; border-radius: 8px; border-left: 4px solid #c45c26;">
+  <h3 style="margin-top: 0; color: #c45c26;">2. Genre from audio</h3>
+  <p style="margin-bottom: 0.5em;"><strong><a href="02_genre_audio.html">Read the page →</a></strong></p>
+  <p style="font-size: 0.9em; color: #666; margin: 0;">The unused signal: recover planted genre from audio, with grouped-by-artist validation</p>
 </div>
 
 </div>
@@ -37,6 +43,7 @@ One executable chapter. Code lives in `src/spotify_powerlaws/` and numbered scri
 - Which columns are antecedent to streams, and which are the target in disguise?
 - Does grouped-by-artist CV change the honest model — or only fail to save a tautological one?
 - When does added capacity stop paying, and does partial pooling find artist effects the ANOVA already said were zero?
+- Did the generator couple audio to **genre** even though it did not couple audio to streams?
 
 </div>
 
@@ -64,7 +71,7 @@ One executable chapter. Code lives in `src/spotify_powerlaws/` and numbered scri
 
 **Python** • pandas • scikit-learn • statsmodels MixedLM • matplotlib • scipy
 
-Pipeline: `projects/spotify-power-laws/Makefile` (`00_download.py` … `08_figures.py`)
+Pipeline: `projects/spotify-power-laws/Makefile` (`00_download.py` … `09_genre.py`)
 
 ---
 

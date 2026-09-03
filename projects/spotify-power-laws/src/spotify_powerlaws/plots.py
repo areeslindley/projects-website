@@ -1,4 +1,4 @@
-"""Six argument-carrying figures. Axes labelled with units; no leftover default titles."""
+"""Argument-carrying figures. Axes labelled with units; no leftover default titles."""
 
 from __future__ import annotations
 
@@ -213,5 +213,95 @@ def figure_shrinkage(models: dict, perm: dict) -> str:
     ax.set_title("Honest blocks barely move out-of-artist RMSE", loc="left", pad=8)
     fig.tight_layout()
     path = figures_dir() / "06_shrinkage_importance.png"
+    save_fig(fig, path)
+    return str(path)
+
+
+def figure_genre_lda(genre: dict) -> str:
+    apply_style()
+    import matplotlib.pyplot as plt
+    import pandas as pd
+
+    scatter = genre["lda_coordinates"]["scatter"]
+    means = pd.DataFrame(genre["lda_coordinates"]["means"])
+    genres = sorted(set(scatter["genre"]))
+    cmap = plt.get_cmap("tab20")
+    color = {g: cmap(i / max(len(genres) - 1, 1)) for i, g in enumerate(genres)}
+    fig, ax = plt.subplots(figsize=(8.2, 6.4))
+    ax.scatter(
+        scatter["ld1"],
+        scatter["ld2"],
+        c=[color[g] for g in scatter["genre"]],
+        s=8,
+        alpha=0.25,
+        linewidths=0,
+    )
+    for row in means.itertuples():
+        ax.scatter(row.ld1, row.ld2, s=40 + 0.004 * row.n, c=[color[row.genre]], edgecolors=INK, linewidths=0.6, zorder=3)
+        ax.annotate(row.genre, (row.ld1, row.ld2), textcoords="offset points", xytext=(5, 4), fontsize=8, color=INK)
+    ev = genre["lda_coordinates"]["explained_variance_ratio"]
+    ax.set_xlabel(f"LD1 ({ev[0]:.0%} of between-genre scatter)")
+    ax.set_ylabel(f"LD2 ({ev[1]:.0%} of between-genre scatter)")
+    ax.set_title("Audio separates planted genres even though it does not predict streams", loc="left", pad=10)
+    fig.tight_layout()
+    path = figures_dir() / "07_genre_lda.png"
+    save_fig(fig, path)
+    return str(path)
+
+
+def figure_genre_confusion(genre: dict) -> str:
+    apply_style()
+    import matplotlib.pyplot as plt
+
+    labels = genre["confusion_lda_grouped"]["labels"]
+    recall = np.array(genre["confusion_lda_grouped"]["recall"])
+    fig, ax = plt.subplots(figsize=(8.6, 7.6))
+    im = ax.imshow(recall, cmap="YlGn", vmin=0, vmax=1)
+    ax.set_xticks(np.arange(len(labels)))
+    ax.set_yticks(np.arange(len(labels)))
+    ax.set_xticklabels(labels, rotation=55, ha="right", fontsize=8)
+    ax.set_yticklabels(labels, fontsize=8)
+    ax.set_xlabel("Predicted genre (LDA, grouped by artist)")
+    ax.set_ylabel("True genre")
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+    cbar.set_label("Recall (row-normalised)")
+    diag = float(np.mean([recall[i, i] for i in range(len(labels))]))
+    ax.set_title(f"Mean diagonal recall = {diag:.2f} — collisions are among neighbouring planted styles", loc="left", pad=10)
+    fig.tight_layout()
+    path = figures_dir() / "08_genre_confusion.png"
+    save_fig(fig, path)
+    return str(path)
+
+
+def figure_genre_ladder(genre: dict) -> str:
+    apply_style()
+    import matplotlib.pyplot as plt
+
+    names = ["dummy", "lda", "logit", "hgb"]
+    labels = ["Dummy\n(prior)", "LDA", "Multinomial\nlogit", "HGB"]
+    grouped = [genre["models"][f"{n}_grouped"]["summary"]["balanced_accuracy"]["mean"] for n in names]
+    grouped_std = [genre["models"][f"{n}_grouped"]["summary"]["balanced_accuracy"]["std"] for n in names]
+    random = [genre["models"][f"{n}_random"]["summary"]["balanced_accuracy"]["mean"] for n in names]
+    random_std = [genre["models"][f"{n}_random"]["summary"]["balanced_accuracy"]["std"] for n in names]
+    x = np.arange(len(names))
+    width = 0.38
+    fig, ax = plt.subplots(figsize=(7.6, 4.4))
+    ax.bar(x - width / 2, grouped, width, yerr=grouped_std, color=TEAL, capsize=3, label="Grouped by artist", ecolor=SLATE)
+    ax.bar(x + width / 2, random, width, yerr=random_std, color=AMBER, capsize=3, label="Random k-fold", ecolor=SLATE)
+    ax.axhline(0.05, color=SLATE, linestyle=":", linewidth=1.2, label="Chance (1/20)")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels)
+    ax.set_ylabel("Balanced accuracy")
+    ax.set_ylim(0, 1.0)
+    ax.legend(loc="upper left")
+    lda_g = grouped[1]
+    logit_g = grouped[2]
+    ax.set_title(
+        f"Grouped balanced accuracy: LDA {lda_g:.2f}, logit {logit_g:.2f}; HGB does not beat logit",
+        loc="left",
+        pad=10,
+    )
+    fig.tight_layout()
+    path = figures_dir() / "09_genre_ladder.png"
     save_fig(fig, path)
     return str(path)

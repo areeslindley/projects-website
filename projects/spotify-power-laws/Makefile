@@ -1,11 +1,11 @@
-.PHONY: all download schema forensics estimand validate models distributional uncertainty figures
+.PHONY: all download schema forensics estimand validate models distributional uncertainty figures genre
 
 PYTHON ?= python3
 SRC := src
 
 export PYTHONPATH := $(SRC):$(PYTHONPATH)
 
-all: download schema forensics estimand validate models distributional uncertainty figures
+all: download schema forensics estimand validate models distributional uncertainty figures genre
 
 download:
 	$(PYTHON) scripts/00_download.py
@@ -33,3 +33,6 @@ uncertainty:
 
 figures:
 	$(PYTHON) scripts/08_figures.py
+
+genre:
+	$(PYTHON) scripts/09_genre.py

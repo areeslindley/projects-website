@@ -10,12 +10,16 @@ import numpy as np
 from . import SEED
 from .distributional import distributional_report
 from .forensics import forensics_report
+from .genre import genre_ladder
 from .io import download_csv, load_raw, sha256_file
 from .models import model_ladder
 from .paths import artifacts_dir
 from .plots import (
     figure_conformal,
     figure_forensics,
+    figure_genre_confusion,
+    figure_genre_ladder,
+    figure_genre_lda,
     figure_learning_curve,
     figure_leakage,
     figure_lorenz,
@@ -133,6 +137,17 @@ def run_figures() -> dict:
     return paths
 
 
+def run_genre() -> dict:
+    df = load_raw()
+    report = genre_ladder(df, SEED)
+    figure_genre_lda(report)
+    figure_genre_confusion(report)
+    figure_genre_ladder(report)
+    report["lda_coordinates"].pop("scatter", None)
+    write_json("genre.json", report)
+    return report
+
+
 STAGES = {
     "download": run_download,
     "schema": run_schema,
@@ -143,6 +158,7 @@ STAGES = {
     "distributional": run_distributional,
     "uncertainty": run_uncertainty,
     "figures": run_figures,
+    "genre": run_genre,
 }
 
 

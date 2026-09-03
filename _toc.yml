@@ -5,6 +5,7 @@ chapters:
   - file: projects/spotify-power-laws/index
     sections:
       - file: projects/spotify-power-laws/01_analysis
+      - file: projects/spotify-power-laws/02_genre_audio
   - file: projects/small-area-estimation/index
     sections:
       - file: projects/small-area-estimation/01_introduction

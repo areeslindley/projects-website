@@ -33,6 +33,7 @@ def main(stage: str | None = None) -> None:
             "distributional": "distributional",
             "uncertainty": "uncertainty",
             "figures": "figures",
+            "genre": "genre",
         }.get(stage)
         if mapped is None:
             raise SystemExit(f"Unknown stage {stage!r}. Choose from {list(STAGES)}")
