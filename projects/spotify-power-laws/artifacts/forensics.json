@@ -1,0 +1,217 @@
+{
+  "publisher_synthetic": true,
+  "publisher_note": "Kaggle metadata: fully synthetic; no real Spotify API data was used.",
+  "benford_stream_count": {
+    "n": 50000,
+    "chi2": 4.703165408817593,
+    "df": 8,
+    "p_value": 0.7887797495491012,
+    "mad": 0.0009308351751986613,
+    "nigrini_conformity": "close",
+    "observed_proportions": [
+      0.29924,
+      0.17836,
+      0.12428,
+      0.09654,
+      0.08026,
+      0.06698,
+      0.0588,
+      0.05012,
+      0.04542
+    ],
+    "benford_proportions": [
+      0.3010299956639812,
+      0.17609125905568124,
+      0.12493873660829993,
+      0.09691001300805642,
+      0.07918124604762482,
+      0.06694678963061322,
+      0.05799194697768673,
+      0.05115252244738129,
+      0.04575749056067514
+    ],
+    "observed_counts": [
+      14962,
+      8918,
+      6214,
+      4827,
+      4013,
+      3349,
+      2940,
+      2506,
+      2271
+    ]
+  },
+  "terminal_stream_count": {
+    "chi2": 3.3308,
+    "p_value": 0.9497248426456918,
+    "last_digit_counts": [
+      5040,
+      4919,
+      4999,
+      5041,
+      5044,
+      4969,
+      5004,
+      4945,
+      5027,
+      5012
+    ],
+    "share_mod10_zero": 0.1008,
+    "share_mod100_zero": 0.01064,
+    "share_mod1000_zero": 0.0009,
+    "uniform_expectation_mod10": 0.1,
+    "uniform_expectation_mod100": 0.01,
+    "uniform_expectation_mod1000": 0.001
+  },
+  "known_real_artists_present": {
+    "Taylor Swift": false,
+    "Drake": false,
+    "The Weeknd": false,
+    "Bad Bunny": false,
+    "Ed Sheeran": false,
+    "BTS": false,
+    "Adele": false,
+    "Beyonc\u00e9": false,
+    "The Beatles": false,
+    "Coldplay": false
+  },
+  "n_known_real_artists_present": 0,
+  "invented_name_examples": [
+    "Aether",
+    "Aria Loom",
+    "Aria Rose",
+    "Aria Scar",
+    "AriaGold",
+    "Atlas Brooks",
+    "Atlas Theory",
+    "Aurora Club",
+    "Aurora Jade",
+    "Aurora Young",
+    "Avalanche",
+    "Axel Dune"
+  ],
+  "external_validation": "No row matches a publicly reported artist. Order-of-magnitude checks against Spotify monthly listeners are not identified for this file; the names are generated.",
+  "audio_target_correlations": {
+    "danceability": -0.0030708383957401882,
+    "energy": 0.004273884777281393,
+    "loudness": 0.004579198349103904,
+    "instrumentalness": 0.0028671382953146403,
+    "tempo": 0.009106358722012181
+  },
+  "energy_loudness_corr": 0.6417679477287404,
+  "popularity_log1p_streams_corr": 0.8940751790498925,
+  "popularity_streams_corr": 0.4001586404942144,
+  "missing_acousticness_valence": true,
+  "duplicate_rows_excluding_id": 0,
+  "duplicate_artist_track_name": 18036,
+  "duplicate_track_name": 41105,
+  "top_track_names": {
+    "Memories": 305,
+    "Shadows": 304,
+    "Islands": 300,
+    "Waves": 299,
+    "Circles": 298,
+    "Mountains": 298,
+    "Mirrors": 298,
+    "Voices": 296,
+    "Rivers": 296,
+    "Keys": 294
+  },
+  "popularity_integer": true,
+  "popularity_min": 0,
+  "popularity_max": 92,
+  "popularity_skew": 0.5910627648223717,
+  "popularity_share_ge_80": 0.00178,
+  "icc_log_streams_artist": {
+    "k": 500,
+    "n": 50000,
+    "icc": -9.9543398779369e-05,
+    "mean_cluster_size": 100.0,
+    "design_effect": 0.9901452035208425,
+    "n_effective": 50497.644004339716,
+    "msb": 3.1887919948736627,
+    "msw": 3.2182877519920963
+  },
+  "icc_log_streams_genre": {
+    "k": 20,
+    "n": 50000,
+    "icc": 0.00013122380433400313,
+    "mean_cluster_size": 2500.0,
+    "design_effect": 1.327928287030674,
+    "n_effective": 37652.63567944844,
+    "msb": 4.154349282543579,
+    "msw": 3.2176374208219762
+  },
+  "gini_track_streams": 0.8372230947009447,
+  "gini_artist_total_streams": 0.8607777198240307,
+  "gini_artist_catalog_size": 0.8331546400000001,
+  "artists_multi_genre": 460,
+  "complete_calendar": true,
+  "correlation_matrix": {
+    "danceability": {
+      "danceability": 1.0,
+      "energy": 0.0775,
+      "loudness": 0.0451,
+      "instrumentalness": -0.2667,
+      "tempo": -0.0719,
+      "popularity": 0.0011,
+      "stream_count": -0.0031
+    },
+    "energy": {
+      "danceability": 0.0775,
+      "energy": 1.0,
+      "loudness": 0.6418,
+      "instrumentalness": -0.0253,
+      "tempo": 0.2548,
+      "popularity": 0.0011,
+      "stream_count": 0.0043
+    },
+    "loudness": {
+      "danceability": 0.0451,
+      "energy": 0.6418,
+      "loudness": 1.0,
+      "instrumentalness": -0.015,
+      "tempo": 0.1612,
+      "popularity": 0.0011,
+      "stream_count": 0.0046
+    },
+    "instrumentalness": {
+      "danceability": -0.2667,
+      "energy": -0.0253,
+      "loudness": -0.015,
+      "instrumentalness": 1.0,
+      "tempo": 0.0358,
+      "popularity": -0.0001,
+      "stream_count": 0.0029
+    },
+    "tempo": {
+      "danceability": -0.0719,
+      "energy": 0.2548,
+      "loudness": 0.1612,
+      "instrumentalness": 0.0358,
+      "tempo": 1.0,
+      "popularity": 0.0003,
+      "stream_count": 0.0091
+    },
+    "popularity": {
+      "danceability": 0.0011,
+      "energy": 0.0011,
+      "loudness": 0.0011,
+      "instrumentalness": -0.0001,
+      "tempo": 0.0003,
+      "popularity": 1.0,
+      "stream_count": 0.4002
+    },
+    "stream_count": {
+      "danceability": -0.0031,
+      "energy": 0.0043,
+      "loudness": 0.0046,
+      "instrumentalness": 0.0029,
+      "tempo": 0.0091,
+      "popularity": 0.4002,
+      "stream_count": 1.0
+    }
+  },
+  "verdict": "The file is a synthetic track catalog with 500 invented artists. Audio features are orthogonal to streams; popularity is a compressed copy of log streams; the superstar pattern is catalog size, not per-track quality. It can teach leakage, validation, and model-capacity questions about this generator. It cannot support claims about Spotify."
+}

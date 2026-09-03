@@ -6,6 +6,18 @@ Welcome! I'm **Alun**, a Statistical Methodologist at the UK Office for National
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2em; margin: 2em 0;">
 
+<div style="background: linear-gradient(135deg, #0d3b4c 0%, #c45c26 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
+  <div style="font-size: 3em; margin-bottom: 0.5em;">📻</div>
+  <h3 style="color: white; margin-top: 0;"><a href="projects/spotify-power-laws/index.html" style="color: white; text-decoration: none;">Power Laws and Popularity</a></h3>
+  <p style="margin-bottom: 1em; opacity: 0.95;">What 50,000 synthetic Spotify tracks can and cannot tell you: leakage, grouped validation, and a model ladder that stops when capacity stops paying.</p>
+  <div style="display: flex; gap: 0.5em; flex-wrap: wrap;">
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Estimands</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Validation</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Forensics</span>
+    <span style="background: rgba(255,255,255,0.2); padding: 0.3em 0.8em; border-radius: 15px; font-size: 0.85em;">Uncertainty</span>
+  </div>
+</div>
+
 <div style="background: linear-gradient(135deg, #0b3d4a 0%, #c0392b 100%); color: white; padding: 2em; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s;">
   <div style="font-size: 3em; margin-bottom: 0.5em;">🩺</div>
   <h3 style="color: white; margin-top: 0;"><a href="projects/cancer-imaging/index.html" style="color: white; text-decoration: none;">Finding Cancer in Ultrasound Images</a></h3>

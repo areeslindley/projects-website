@@ -1,0 +1,84 @@
+"""Estimand, leakage classification, and feature sets. Locked before fitting."""
+
+from __future__ import annotations
+
+HONEST_NUMERIC = [
+    "duration_ms",
+    "danceability",
+    "energy",
+    "loudness",
+    "instrumentalness",
+    "tempo",
+    "key",
+    "mode",
+    "explicit",
+    "release_month",
+]
+
+HONEST_CATEGORICAL = ["genre", "country", "label"]
+
+LEAKAGE_NUMERIC = [
+    "popularity",
+    "log_stream_count",
+    "artist_track_count",
+]
+
+LEAKAGE_CATEGORICAL = ["popularity_category"]
+
+FEATURE_ROLES = {
+    "duration_ms": "antecedent",
+    "danceability": "antecedent",
+    "energy": "antecedent",
+    "loudness": "antecedent",
+    "instrumentalness": "antecedent",
+    "tempo": "antecedent",
+    "key": "antecedent",
+    "mode": "antecedent",
+    "explicit": "antecedent",
+    "release_month": "antecedent (release calendar)",
+    "genre": "antecedent / concurrent label",
+    "country": "concurrent; origin vs market unidentified",
+    "label": "concurrent; mix of real and invented names",
+    "upbeat_score": "constructed from audio; excluded as duplicate",
+    "duration_minutes": "constructed; excluded as duplicate",
+    "key_name": "constructed; excluded as duplicate",
+    "mode_name": "constructed; excluded as duplicate",
+    "is_explicit_bool": "constructed; excluded as duplicate",
+    "release_year": "constructed from date; excluded (collinear with month in a 6-year window if also using year dummies elsewhere)",
+    "release_quarter": "constructed; excluded as duplicate",
+    "is_weekend_release": "constructed; excluded as duplicate of calendar",
+    "loudness_category": "constructed; excluded as duplicate",
+    "popularity": "consequent of streams",
+    "popularity_category": "discretisation of popularity",
+    "log_stream_count": "deterministic transform of the target",
+    "artist_track_count": "whole-sample group size",
+}
+
+ESTIMAND = {
+    "target": "stream_count",
+    "working_scale": "log1p(stream_count)",
+    "back_transform": "Duan smearing: exp(pred) * mean(exp(residual)) - 1",
+    "question": (
+        "Among tracks in this synthetic catalog, what is the association between "
+        "antecedent audio and release features and log1p stream counts, with "
+        "artist as the unit of independence?"
+    ),
+    "question_type": "explanatory of the generator, with a predictive rider on held-out artists",
+    "unit_of_independence": "artist_name",
+    "decision": (
+        "A hiring manager should not ship a Spotify-success model trained on this "
+        "file. A statistician should not treat R² from popularity or log_stream_count "
+        "as a result about music."
+    ),
+    "not_identified": [
+        "effects of genre, label, or country on real-world streams",
+        "2020 as a COVID intervention in listening",
+        "generalisation to Spotify's catalogue",
+        "why any named artist's streams changed",
+    ],
+    "honest_numeric": HONEST_NUMERIC,
+    "honest_categorical": HONEST_CATEGORICAL,
+    "leakage_numeric": LEAKAGE_NUMERIC,
+    "leakage_categorical": LEAKAGE_CATEGORICAL,
+    "feature_roles": FEATURE_ROLES,
+}

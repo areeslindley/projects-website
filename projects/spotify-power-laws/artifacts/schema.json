@@ -1,0 +1,335 @@
+{
+  "n_rows": 50000,
+  "n_cols": 33,
+  "n_artists": 500,
+  "expected_rows": 50000,
+  "expected_cols": 33,
+  "expected_artists": 500,
+  "grain": "track",
+  "grain_note": "One row is one track. release_date is a track-release calendar, not artist-year streaming. This is not a panel of listening.",
+  "date_min": "2020-01-01",
+  "date_max": "2025-12-31",
+  "n_unique_dates": 2192,
+  "calendar_days": 2192,
+  "complete_calendar": true,
+  "artist_tracks_min": 2,
+  "artist_tracks_median": 16.5,
+  "artist_tracks_mean": 100.0,
+  "artist_tracks_max": 12111,
+  "top_artist": "Knot Hart",
+  "top_artist_share": 0.24222,
+  "top10_row_share": 0.59562,
+  "log_stream_is_round_log1p": true,
+  "duration_minutes_is_round_ms": true,
+  "explicit_equals_bool_flag": true,
+  "artist_track_count_is_group_size": true,
+  "missing_audio": [
+    "acousticness",
+    "valence",
+    "speechiness",
+    "liveness",
+    "time_signature"
+  ],
+  "missing_success_fields": [
+    "followers",
+    "monthly_listeners",
+    "chart_peak",
+    "chart_position"
+  ],
+  "columns": [
+    {
+      "name": "track_id",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 50000,
+      "units": "UUID",
+      "role": "primary key"
+    },
+    {
+      "name": "track_name",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 8895,
+      "units": "string",
+      "role": "label"
+    },
+    {
+      "name": "artist_name",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 500,
+      "units": "string (invented)",
+      "role": "clustering unit"
+    },
+    {
+      "name": "album_name",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 4019,
+      "units": "string",
+      "role": "label"
+    },
+    {
+      "name": "release_date",
+      "dtype": "datetime64[ns]",
+      "missing": 0,
+      "cardinality": 2192,
+      "units": "calendar date (YYYY-MM-DD)",
+      "role": "release calendar (not a listening panel)"
+    },
+    {
+      "name": "genre",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 20,
+      "units": "nominal (20 labels)",
+      "role": "covariate; not a partition of artists"
+    },
+    {
+      "name": "duration_ms",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 42765,
+      "units": "milliseconds",
+      "role": "antecedent"
+    },
+    {
+      "name": "popularity",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 93,
+      "units": "integer index, claimed 0\u2013100",
+      "role": "consequent of streams"
+    },
+    {
+      "name": "danceability",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 7625,
+      "units": "unit interval",
+      "role": "antecedent (audio)"
+    },
+    {
+      "name": "energy",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 7774,
+      "units": "unit interval",
+      "role": "antecedent (audio)"
+    },
+    {
+      "name": "key",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 12,
+      "units": "pitch class 0\u201311",
+      "role": "antecedent"
+    },
+    {
+      "name": "loudness",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 1564,
+      "units": "dB (max 0)",
+      "role": "antecedent (audio)"
+    },
+    {
+      "name": "mode",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 2,
+      "units": "1 = major, 0 = minor",
+      "role": "antecedent"
+    },
+    {
+      "name": "instrumentalness",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 3836,
+      "units": "unit interval",
+      "role": "antecedent (audio)"
+    },
+    {
+      "name": "tempo",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 9222,
+      "units": "BPM",
+      "role": "antecedent (audio)"
+    },
+    {
+      "name": "stream_count",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 34433,
+      "units": "count; observation window unspecified",
+      "role": "candidate target"
+    },
+    {
+      "name": "country",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 30,
+      "units": "ISO-2",
+      "role": "covariate"
+    },
+    {
+      "name": "explicit",
+      "dtype": "bool",
+      "missing": 0,
+      "cardinality": 2,
+      "units": "boolean",
+      "role": "antecedent"
+    },
+    {
+      "name": "label",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 30,
+      "units": "string",
+      "role": "covariate"
+    },
+    {
+      "name": "release_year",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 6,
+      "units": "year; deterministic from release_date",
+      "role": "derived"
+    },
+    {
+      "name": "release_month",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 12,
+      "units": "month 1\u201312; deterministic from release_date",
+      "role": "derived"
+    },
+    {
+      "name": "release_day_of_week",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 7,
+      "units": "English weekday; deterministic from release_date",
+      "role": "derived"
+    },
+    {
+      "name": "duration_minutes",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 458,
+      "units": "minutes = round(duration_ms / 60000, 2)",
+      "role": "derived"
+    },
+    {
+      "name": "popularity_category",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 4,
+      "units": "Low/Medium/High/Very High bins of popularity",
+      "role": "derived / consequent"
+    },
+    {
+      "name": "loudness_category",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 3,
+      "units": "Quiet/Moderate/Loud bins of loudness",
+      "role": "derived"
+    },
+    {
+      "name": "key_name",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 12,
+      "units": "letter name of key",
+      "role": "derived"
+    },
+    {
+      "name": "mode_name",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 2,
+      "units": "Major/Minor",
+      "role": "derived"
+    },
+    {
+      "name": "is_explicit_bool",
+      "dtype": "bool",
+      "missing": 0,
+      "cardinality": 2,
+      "units": "duplicate of explicit",
+      "role": "derived"
+    },
+    {
+      "name": "release_quarter",
+      "dtype": "object",
+      "missing": 0,
+      "cardinality": 4,
+      "units": "Q1\u2013Q4 from month",
+      "role": "derived"
+    },
+    {
+      "name": "is_weekend_release",
+      "dtype": "bool",
+      "missing": 0,
+      "cardinality": 2,
+      "units": "Saturday/Sunday flag",
+      "role": "derived"
+    },
+    {
+      "name": "log_stream_count",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 29256,
+      "units": "round(log1p(stream_count), 4)",
+      "role": "deterministic transform of target"
+    },
+    {
+      "name": "upbeat_score",
+      "dtype": "float64",
+      "missing": 0,
+      "cardinality": 5691,
+      "units": "linear composite of danceability, energy, tempo",
+      "role": "composite of audio"
+    },
+    {
+      "name": "artist_track_count",
+      "dtype": "int64",
+      "missing": 0,
+      "cardinality": 128,
+      "units": "full-sample group size of artist_name",
+      "role": "whole-sample statistic"
+    }
+  ],
+  "year_counts": {
+    "2020": 8355,
+    "2021": 8387,
+    "2022": 8257,
+    "2023": 8242,
+    "2024": 8441,
+    "2025": 8318
+  },
+  "genre_counts": {
+    "R&B": 13273,
+    "Pop": 12915,
+    "Hip-Hop": 3930,
+    "Latin": 2661,
+    "EDM": 2407,
+    "Rock": 2370,
+    "Folk": 2249,
+    "Metal": 1695,
+    "K-Pop": 1384,
+    "Country": 1294,
+    "Indie": 1065,
+    "Trap": 915,
+    "Jazz": 810,
+    "Reggaeton": 785,
+    "Alternative": 759,
+    "Punk": 384,
+    "Classical": 357,
+    "Soul": 325,
+    "Afrobeats": 224,
+    "Disco": 198
+  }
+}

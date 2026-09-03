@@ -1,0 +1,99 @@
+{
+  "seed": 20260903,
+  "csv": "data/raw/spotify_artist_streaming_2020_2025.csv",
+  "schema_n": 50000,
+  "verdict": "The file is a synthetic track catalog with 500 invented artists. Audio features are orthogonal to streams; popularity is a compressed copy of log streams; the superstar pattern is catalog size, not per-track quality. It can teach leakage, validation, and model-capacity questions about this generator. It cannot support claims about Spotify.",
+  "models_tests": {
+    "ols_vs_intercept_grouped": {
+      "mean_diff": -0.042193467608556065,
+      "t": -41.21320247435488,
+      "df": 4,
+      "p_value": 2.0715867689112436e-06,
+      "correction": "Nadeau-Bengio 2003; n_test/n_train = 1/(k-1)"
+    },
+    "boost_vs_ols_grouped": {
+      "mean_diff": 0.003539296989397611,
+      "t": 4.149126712822952,
+      "df": 4,
+      "p_value": 0.014270389585734632,
+      "correction": "Nadeau-Bengio 2003; n_test/n_train = 1/(k-1)"
+    },
+    "enet_vs_ols_grouped": {
+      "mean_diff": -0.0009536873870593876,
+      "t": -2.106794711783205,
+      "df": 4,
+      "p_value": 0.10286160286219793,
+      "correction": "Nadeau-Bengio 2003; n_test/n_train = 1/(k-1)"
+    },
+    "ols_random_vs_grouped": {
+      "mean_diff": -0.0015909830499884147,
+      "t": -0.09528640178411016,
+      "df": 4,
+      "p_value": 0.9286700573735107,
+      "correction": "Nadeau-Bengio 2003; n_test/n_train = 1/(k-1)"
+    },
+    "leakage_vs_honest_grouped": {
+      "mean_diff": -1.752701397963007,
+      "t": -137.16399599700767,
+      "df": 4,
+      "p_value": 1.6944816086888138e-08,
+      "correction": "Nadeau-Bengio 2003; n_test/n_train = 1/(k-1)"
+    }
+  },
+  "optimism_gap": {
+    "grouped_mean": 1.7527303026622032,
+    "random_mean": 1.751139319612215,
+    "relative_drop": 0.0009077169759498963
+  },
+  "leakage_gap": {
+    "honest": 0.046378874651857326,
+    "leakage": 0.9999999997405806
+  },
+  "mixedlm": {
+    "converged": false,
+    "var_artist": 0.00512850678105066,
+    "sd_artist": 0.0716135935493441,
+    "var_resid": 3.215989047904765,
+    "icc": 0.0015921513865863517,
+    "n_groups": 500,
+    "llf": -100228.37777558214,
+    "note": "Artist random-intercept scale near zero means partial pooling collapses toward complete pooling for this generator."
+  },
+  "conformal_80": {
+    "nominal": 0.8,
+    "empirical": 0.7956195398055863,
+    "interval_halfwidth": 2.2811056997960684,
+    "median_width": 4.562211399592137
+  },
+  "powerlaw_tracks": {
+    "xmin": 85770.0,
+    "alpha": 1.8611061849046302,
+    "n_tail": 10001,
+    "n": 50000,
+    "ks": 0.05556664093429875,
+    "gof": {
+      "observed_ks": 0.05556664093429875,
+      "p_value": 0.012345679012345678,
+      "n_boot": 80
+    },
+    "vuong_pl_vs_lognormal": {
+      "z": 29.138009754448408,
+      "p_value": 1.185318891014971e-186,
+      "mean_log_ratio": 0.21376154147041287
+    },
+    "vuong_pl_vs_stretched_exp": {
+      "z": 41.26197774601529,
+      "p_value": 0.0,
+      "mean_log_ratio": 0.4522823421144239
+    },
+    "lognormal_params": {
+      "sigma": 0.9458800292084539,
+      "scale": 273955.6579738121
+    },
+    "stretched_exp_params": {
+      "c": 0.8485293334675724,
+      "scale": 458814.3904607987
+    },
+    "interpretation": "A non-significant Vuong test means lognormal is not distinguishable from a power law on the fitted tail. That is a result, not a failure."
+  }
+}

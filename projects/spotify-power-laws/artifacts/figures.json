@@ -1,0 +1,8 @@
+{
+  "forensics": "figures/01_forensics.png",
+  "leakage": "figures/02_leakage_gap.png",
+  "learning_curve": "figures/03_learning_curve.png",
+  "lorenz": "figures/04_lorenz.png",
+  "conformal": "figures/05_conformal.png",
+  "shrinkage": "figures/06_shrinkage_importance.png"
+}

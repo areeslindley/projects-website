@@ -46,3 +46,5 @@ Thumbs.db
 projects/uk-urban-systems-network/data/raw/
 projects/literary-nlp/data/raw/
 projects/small-area-estimation/data/raw/
+projects/spotify-power-laws/data/raw/*.csv
+projects/spotify-power-laws/data/raw/*.zip
